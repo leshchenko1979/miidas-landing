@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0c0c'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='36' fill='%233db4ff'%3EM%3C/text%3E%3C/svg%3E">
+
+    <title>Рецепты — МИИДАС</title>
+    <meta name="description" content="Конкретные задачи, которые бот МИИДАС решает у клиентов: отчёты, сверки, договоры, фиды. С проблемой, решением и копируемым результатом.">
+    <meta property="og:title" content="Рецепты — МИИДАС">
+    <meta property="og:description" content="Конкретные задачи, которые бот МИИДАС решает у клиентов.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://miidas.ru/recipes/">
+    <meta property="og:image" content="https://miidas.ru/og-image.png">
+
+    <link rel="canonical" href="https://miidas.ru/recipes/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="recipe.css">
+</head>
+<body>
+    <nav class="landing-nav" aria-label="Навигация">
+        <a href="/" class="nav-brand">МИИДАС</a>
+        <button type="button" class="nav-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-links">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+            <a href="/#pain-points">Как работает</a>
+            <a href="/#testimonials">Отзывы</a>
+            <a href="/recipes/" class="active">Рецепты</a>
+            <a href="/#pricing">Тариф</a>
+            <a href="/#faq">Вопросы</a>
+        </div>
+    </nav>
+
+    <main class="recipe-page">
+        <p class="recipe-eyebrow">Рецепты</p>
+        <h1>Что бот делает у клиентов каждый день</h1>
+        <p style="font-family: 'Manrope', sans-serif; font-size: 17px; line-height: 1.6; color: #4a4a52; margin: 0 0 40px;">
+            Каждый рецепт — реальная задача от клиента. Откройте — увидите проблему, как бот её решил и копируемый результат, который можно взять и применить.
+        </p>
+
+        <div class="recipes-grid">
+            <a class="recipe-card" href="/recipes/listings/">
+                <span class="recipe-emoji">🏠</span>
+                <h3>Объявления и фид из PDF</h3>
+                <p>Презентация объекта → 8 объявлений + готовый фид за 30 секунд.</p>
+            </a>
+            <a class="recipe-card" href="/recipes/payment/">
+                <span class="recipe-emoji">💳</span>
+                <h3>Платёжки в Сбербанк</h3>
+                <p>Скриншот выписки → 12 черновиков с проверенными ИНН и КПП.</p>
+            </a>
+            <a class="recipe-card" href="/recipes/refunds-reconcile/">
+                <span class="recipe-emoji">📊</span>
+                <h3>Сверка возвратов в Адеск</h3>
+                <p>40 возвратов из банка → разноска по заказам + XLSX с расхождениями.</p>
+            </a>
+            <a class="recipe-card" href="/recipes/protocol-disagreements/">
+                <span class="recipe-emoji">⚖️</span>
+                <h3>Протокол разногласий</h3>
+                <p>Договор аренды на 25 стр. → спорные пункты + формулировки за день.</p>
+            </a>
+            <a class="recipe-card" href="/recipes/dds-photo/">
+                <span class="recipe-emoji">📷</span>
+                <h3>ДДС по фото чеков</h3>
+                <p>23 фото чеков → строки в Google Sheets с разбивкой по проектам.</p>
+            </a>
+        </div>
+
+        <div class="recipe-cta" style="margin-top: 64px;">
+            <button class="cta-primary cta-clean" type="button" data-source="recipe_index">
+                Попробовать в Telegram за 1 минуту
+            </button>
+            <p class="cta-microcopy">14 дней бесплатно, без карты. Никаких автосписаний.</p>
+        </div>
+
+        <p id="claimStatus" class="claim-status claim-toast hidden" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="../app.js"></script>
+</body>
+</html>

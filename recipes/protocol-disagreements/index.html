@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0c0c'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='36' fill='%233db4ff'%3EM%3C/text%3E%3C/svg%3E">
+
+    <title>Как составить протокол разногласий к договору аренды — МИИДАС</title>
+    <meta name="description" content="Загрузите договор аренды → бот выделит спорные пункты, предложит формулировки и соберёт протокол разногласий в DOCX. Согласование за день, а не за неделю.">
+    <meta property="og:title" content="Как составить протокол разногласий к договору аренды — МИИДАС">
+    <meta property="og:description" content="Загрузите договор аренды → бот выделит спорные пункты, предложит формулировки и соберёт протокол разногласий в DOCX. Согласование за день, а не за неделю.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://miidas.ru/recipes/protocol-disagreements/">
+    <meta property="og:image" content="https://miidas.ru/og-image.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="https://miidas.ru/recipes/protocol-disagreements/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Shared design-token layer from main landing -->
+    <link rel="stylesheet" href="../../style.css">
+    <!-- Recipe-specific overrides (uses the same tokens) -->
+    <link rel="stylesheet" href="../../recipes/recipe.css">
+</head>
+
+<body>
+    <nav class="landing-nav" aria-label="Навигация">
+        <a href="/" class="nav-brand">МИИДАС</a>
+        <button type="button" class="nav-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-links">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+            <a href="/#pain-points">Как работает</a>
+            <a href="/#testimonials">Отзывы</a>
+            <a href="/#pricing">Тариф</a>
+            <a href="/#faq">Вопросы</a>
+        </div>
+    </nav>
+
+    <main class="recipe-page">
+        <a href="/recipes/" class="recipe-back">← Все рецепты</a>
+        <p class="recipe-eyebrow">Рецепт</p>
+        <h1>Как составить протокол разногласий к договору аренды</h1>
+
+        <!-- § Проблема -->
+        <section class="recipe-section">
+            <h2>Проблема</h2>
+            <p>Арендодатель прислал типовой договор на 25 страниц. Спорных пунктов — семь: про индексацию, про выход из договора, про неустойку, про ремонт. Юрист берёт неделю, чтобы пройти каждый пункт и сформулировать правки. Арендодатель отвечает через три дня, и цикл повторяется.</p><p>В итоге: договор согласовывается месяц, объект простаивает.</p>
+        </section>
+
+        <!-- § Что делает бот -->
+        <section class="recipe-section">
+            <h2>Что делает бот</h2>
+            <div class="tg-chat"><div class="tg-msg-user">[PDF договор аренды, 25 стр.]</div><div class="tg-msg-bot">Нашёл 7 спорных пунктов:
+
+1. п. 4.3 — индексация 8% (рынок: 5–6%)
+2. п. 6.1 — выход без штрафа только первые 6 мес. (хотим весь срок)
+3. п. 7.4 — неустойка 0,5% в день (двухсторонняя)
+...
+
+Сформулировал правки. DOCX с протоколом: [ссылка].
+
+Открыть на правку: [ссылка]</div></div>
+        </section>
+
+        <!-- § Копируйте шаблон + CTA -->
+        <section class="recipe-section">
+            <h2>Копируйте шаблон</h2>
+            <p>Так выглядит один пункт протокола. Формулировка арендодателя, ваша правка, обоснование.</p>
+            <pre class="artifact">ПРОТОКОЛ РАЗНОГЛАСИЙ
+к Договору аренды № А-2026-08-15 от 15.08.2026
+
+Пункт 4.3 «Индексация арендной платы»
+
+Редакция Арендодателя:
+«Арендная плата индексируется на 8% ежегодно, начиная со второго года аренды.»
+
+Редакция Арендатора:
+«Арендная плата индексируется ежегодно на уровень ИПЦ Росстат, но не более 5%.»
+
+Обоснование: ИПЦ за последние 3 года — 7,2%, 6,5%, 5,1%. Индексация 8% превышает фактическую инфляцию. Односторонняя индексация 8% — стандартная практика для крупных арендодателей; для помещений street-retail рынок — 4–5%.
+
+Пункт 6.1 «Досрочное расторжение»
+
+Редакция Арендодателя:
+«Арендатор вправе расторгнуть договор без уплаты штрафа в течение первых 6 месяцев. По истечении 6 месяцев — штраф 3 месячных арендных платы.»
+
+Редакция Арендатора:
+«Арендатор вправе расторгнуть договор без уплаты штрафа в течение всего срока аренды, уведомив Арендодателя за 60 дней.»
+
+Обоснование: 6-месячный срок — это компенсация расходов Арендодателя на поиск нового арендатора. По истечении 6 месяцев объект уже работает, расходы окупились. Штраф 3 месячных платы — избыточен.</pre>
+        </section>
+
+        <div class="recipe-cta">
+            <button class="cta-primary cta-clean" type="button" data-source="recipe_protocol-disagreements">
+                Попробовать в Telegram за 1 минуту
+            </button>
+            <p class="cta-microcopy">14 дней бесплатно, без карты. Никаких автосписаний.</p>
+        </div>
+
+        <p id="claimStatus" class="claim-status claim-toast hidden" role="status" aria-live="polite"></p>
+    </main>
+
+    <footer>
+        <div><strong>МИИДАС</strong> — ИИ-помощник руководителя · <a href="https://miidas.ru">miidas.ru</a></div>
+        <div class="footer-links">
+            <a href="https://t.me/leshchenko1979">Связаться с основателем</a>
+            <a href="mailto:leshchenko@gmail.com">leshchenko@gmail.com</a>
+        </div>
+    </footer>
+
+    <script src="../../app.js"></script>
+</body>
+
+</html>

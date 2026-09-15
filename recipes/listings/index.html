@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0c0c'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='36' fill='%233db4ff'%3EM%3C/text%3E%3C/svg%3E">
+
+    <title>Как загрузить объявления на Яндекс.Недвижимость из PDF презентации — МИИДАС</title>
+    <meta name="description" content="Презентация объекта на 12 слайдов → 8 объявлений + готовый фид для Яндекс.Недвижимости за 30 секунд. Без ручного копирования и проверок площадки.">
+    <meta property="og:title" content="Как загрузить объявления на Яндекс.Недвижимость из PDF презентации — МИИДАС">
+    <meta property="og:description" content="Презентация объекта на 12 слайдов → 8 объявлений + готовый фид для Яндекс.Недвижимости за 30 секунд. Без ручного копирования и проверок площадки.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://miidas.ru/recipes/listings/">
+    <meta property="og:image" content="https://miidas.ru/og-image.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="https://miidas.ru/recipes/listings/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Shared design-token layer from main landing -->
+    <link rel="stylesheet" href="../../style.css">
+    <!-- Recipe-specific overrides (uses the same tokens) -->
+    <link rel="stylesheet" href="../../recipes/recipe.css">
+</head>
+
+<body>
+    <nav class="landing-nav" aria-label="Навигация">
+        <a href="/" class="nav-brand">МИИДАС</a>
+        <button type="button" class="nav-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-links">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+            <a href="/#pain-points">Как работает</a>
+            <a href="/#testimonials">Отзывы</a>
+            <a href="/#pricing">Тариф</a>
+            <a href="/#faq">Вопросы</a>
+        </div>
+    </nav>
+
+    <main class="recipe-page">
+        <a href="/recipes/" class="recipe-back">← Все рецепты</a>
+        <p class="recipe-eyebrow">Рецепт</p>
+        <h1>Как загрузить объявления на Яндекс.Недвижимость из PDF презентации</h1>
+
+        <!-- § Проблема -->
+        <section class="recipe-section">
+            <h2>Проблема</h2>
+            <p>Презентация объекта на 12 слайдов: фотограф пересылает фотки в WhatsApp, менеджер копирует текст по одному полю. Площадка отклоняет фид с третьей попытки — то формат не совпал, то фотки в другой папке, то не хватает обязательного поля. Каждый объект — два дня согласований.</p><p>В итоге: один объект выкладывается неделю, а на 8 объектов нужен месяц.</p>
+        </section>
+
+        <!-- § Что делает бот -->
+        <section class="recipe-section">
+            <h2>Что делает бот</h2>
+            <div class="tg-chat"><div class="tg-msg-user">[PDF презентация, 12 слайдов + фотки]</div><div class="tg-msg-bot">Готово. 8 объявлений в черновике, фид проверен.
+
+Площадка приняла фид с первого раза.
+
+Открыть черновик: [ссылка]</div></div>
+        </section>
+
+        <!-- § Копируйте шаблон + CTA -->
+        <section class="recipe-section">
+            <h2>Копируйте шаблон</h2>
+            <p>Так выглядит одно объявление из фида. Можно скопировать и править под себя — бот сделает шаблон под ваш формат.</p>
+            <pre class="artifact"><offer internal-id="MSK-001">
+  <type>аренда</type>
+  <category>street-retail</category>
+  <address>Москва, ул. Тверская, 12</address>
+  <area-total>185.4</area-total>
+  <price>450000</price>
+  <currency>RUB</currency>
+  <period>месяц</period>
+  <description>Помещение на первой линии, отдельный вход, витринные окна. Высота потолков 4.2 м, эл. мощность 25 кВт. Ранее — кофейня, готовый ремонт под общепит.</description>
+  <photos>
+    <photo url="photo-1.jpg" main="true"/>
+    <photo url="photo-2.jpg"/>
+    <photo url="photo-3.jpg"/>
+  </photos>
+  <contact-phone>+7-XXX-XXX-XX-XX</contact-phone>
+  <company>ИП Иванова</company>
+</offer></pre>
+        </section>
+
+        <div class="recipe-cta">
+            <button class="cta-primary cta-clean" type="button" data-source="recipe_listings">
+                Попробовать в Telegram за 1 минуту
+            </button>
+            <p class="cta-microcopy">14 дней бесплатно, без карты. Никаких автосписаний.</p>
+        </div>
+
+        <p id="claimStatus" class="claim-status claim-toast hidden" role="status" aria-live="polite"></p>
+    </main>
+
+    <footer>
+        <div><strong>МИИДАС</strong> — ИИ-помощник руководителя · <a href="https://miidas.ru">miidas.ru</a></div>
+        <div class="footer-links">
+            <a href="https://t.me/leshchenko1979">Связаться с основателем</a>
+            <a href="mailto:leshchenko@gmail.com">leshchenko@gmail.com</a>
+        </div>
+    </footer>
+
+    <script src="../../app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+{
+  "slug": "listings",
+  "title": "Как загрузить объявления на Яндекс.Недвижимость из PDF презентации",
+  "meta_description": "Презентация объекта на 12 слайдов → 8 объявлений + готовый фид для Яндекс.Недвижимости за 30 секунд. Без ручного копирования и проверок площадки.",
+  "og_image": "https://miidas.ru/og-image.png",
+  "problem_html": "<p>Презентация объекта на 12 слайдов: фотограф пересылает фотки в WhatsApp, менеджер копирует текст по одному полю. Площадка отклоняет фид с третьей попытки — то формат не совпал, то фотки в другой папке, то не хватает обязательного поля. Каждый объект — два дня согласований.</p><p>В итоге: один объект выкладывается неделю, а на 8 объектов нужен месяц.</p>",
+  "mockup_html": "<div class=\"tg-chat\"><div class=\"tg-msg-user\">[PDF презентация, 12 слайдов + фотки]</div><div class=\"tg-msg-bot\">Готово. 8 объявлений в черновике, фид проверен.\n\nПлощадка приняла фид с первого раза.\n\nОткрыть черновик: [ссылка]</div></div>",
+  "artifact_lead": "Так выглядит одно объявление из фида. Можно скопировать и править под себя — бот сделает шаблон под ваш формат.",
+  "artifact_text": "<offer internal-id=\"MSK-001\">\n  <type>аренда</type>\n  <category>street-retail</category>\n  <address>Москва, ул. Тверская, 12</address>\n  <area-total>185.4</area-total>\n  <price>450000</price>\n  <currency>RUB</currency>\n  <period>месяц</period>\n  <description>Помещение на первой линии, отдельный вход, витринные окна. Высота потолков 4.2 м, эл. мощность 25 кВт. Ранее — кофейня, готовый ремонт под общепит.</description>\n  <photos>\n    <photo url=\"photo-1.jpg\" main=\"true\"/>\n    <photo url=\"photo-2.jpg\"/>\n    <photo url=\"photo-3.jpg\"/>\n  </photos>\n  <contact-phone>+7-XXX-XXX-XX-XX</contact-phone>\n  <company>ИП Иванова</company>\n</offer>",
+  "source_audit_ref": "yanina-use-cases-2026-08-21.md #1 (Объявления, 200 msg)"
+}

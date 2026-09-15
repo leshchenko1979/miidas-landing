@@ -1,0 +1,178 @@
+/* recipe.css — styles for /recipes/* pages.
+   Reuses CSS custom-property tokens defined in ../style.css (:root).
+   Each recipe page is a light-on-dark surface that inherits the same
+   type scale, spacing, and CTA tokens from the main landing. */
+
+/* ── Page shell ── */
+.recipe-page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+    color: var(--text);
+}
+
+/* ── Eyebrow label ── */
+.recipe-eyebrow {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin: 0 0 12px;
+}
+
+/* ── Page title ── */
+.recipe-page h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.25rem);
+    line-height: 1.2;
+    font-weight: 800;
+    color: var(--text-bright);
+    margin: 0 0 32px;
+    text-wrap: balance;
+    letter-spacing: -0.03em;
+}
+
+/* ── Section card ── */
+.recipe-section {
+    margin: 0 0 40px;
+    padding: 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+.recipe-section h2 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+}
+
+.recipe-section p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0 0 12px;
+}
+
+.recipe-section p:last-child {
+    margin-bottom: 0;
+}
+
+/* ── Inline Telegram mockup (simplified) ── */
+.recipe-section .tg-chat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.recipe-section .tg-chat .tg-msg-user {
+    background: var(--primary);
+    color: var(--text-bright);
+    padding: 8px 12px;
+    border-radius: 12px 12px 4px 12px;
+    margin-bottom: 8px;
+    max-width: 80%;
+    margin-left: auto;
+    text-align: right;
+}
+
+.recipe-section .tg-chat .tg-msg-bot {
+    background: var(--card);
+    color: var(--text);
+    padding: 8px 12px;
+    border-radius: 12px 12px 12px 4px;
+    margin-bottom: 8px;
+    max-width: 85%;
+    white-space: pre-wrap;
+}
+
+.recipe-section .tg-chat .tg-msg-bot .tg-label {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.recipe-section .tg-chat .tg-msg-bot .tg-dim {
+    color: var(--text-dim);
+    font-size: 0.82rem;
+}
+
+.recipe-section .tg-chat .tg-msg-bot .tg-highlight {
+    color: var(--text-bright);
+    font-weight: 700;
+}
+
+.recipe-section .tg-chat .tg-msg-bot .tg-success {
+    color: var(--success);
+    font-weight: 600;
+}
+
+/* ── Artifact / code block ── */
+.recipe-section pre.artifact {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    overflow-x: auto;
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* ── CTA block ── */
+.recipe-cta {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.recipe-cta .cta-microcopy {
+    margin-top: 12px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* ── Back link ── */
+.recipe-back {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: color 0.15s var(--ease-out);
+}
+
+.recipe-back:hover {
+    color: var(--primary);
+}
+
+/* ── Mobile ── */
+@media (max-width: 720px) {
+    .recipe-page {
+        padding: 32px 16px 64px;
+    }
+
+    .recipe-page h1 {
+        font-size: 1.6rem;
+    }
+
+    .recipe-section {
+        padding: 20px;
+    }
+}

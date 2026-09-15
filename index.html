@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0c0c'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='36' fill='%233db4ff'%3EM%3C/text%3E%3C/svg%3E">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МИИДАС — ИИ-помощник руководителя в Telegram</title>
+    <meta property="og:title" content="МИИДАС — ИИ-помощник руководителя в Telegram">
+    <meta property="og:description"
+        content="Отправьте выписку — получите готовый XLSX. А потом он запомнит и продолжит. Личный ИИ-ассистент для руководителя: юридические разборы, сверки, аналитика — прямо в Telegram.">
+    <meta property="og:image" content="https://miidas.ru/og-image.png">
+    <meta property="og:url" content="https://miidas.ru/">
+    <meta property="og:type" content="website">
+
+    <meta name="description"
+        content="МИИДАС — ИИ-помощник руководителя в Telegram. Принимает файлы, запоминает контекст между сессиями и учится на ошибках. 14 дней бесплатно.">
+    <meta name="yandex-verification" content="74589a377688195d" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="landing-nav" aria-label="Навигация">
+        <a href="#top" class="nav-brand">МИИДАС</a>
+        <button type="button" class="nav-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-links">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+            <a href="#pain-points">Как работает</a>
+            <a href="#testimonials">Отзывы</a>
+            <a href="/recipes/">Рецепты</a>
+            <a href="/course/">Практикум</a>
+            <a href="#pricing">Тариф</a>
+            <a href="#faq">Вопросы</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="top">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Устали считать расходы и сводить таблицы вручную?</h1>
+                    <p class="subhead">
+                        Отправьте выписку, скриншот или договор — получите готовый XLSX, разбор или сверку за минуты.
+                        МИИДАС запомнит ваш бизнес между сессиями и учится на ошибках. Прямо в Telegram, без настроек.
+                    </p>
+                    <div class="cta-row">
+                        <button class="cta-primary cta-clean" id="claimBtn" type="button">
+                            Попробовать в Telegram за 1 минуту
+                        </button>
+                        <p class="cta-microcopy">14 дней бесплатно, без карты. Никаких автосписаний.</p>
+                    </div>
+                </div>
+
+                <div class="hero-mockup">
+                    <div class="tg-chat">
+                        <div class="tg-header">
+                            <div class="tg-avatar">М</div>
+                            <div>
+                                <div class="tg-name">МИИДАС</div>
+                                <div class="tg-status">на связи</div>
+                            </div>
+                        </div>
+                        <div class="tg-body">
+                            <div class="tg-inner">
+                                <div class="tg-msg tg-msg-user">
+                                    Вот скриншоты «Проект-2024» и CSV-файл. Сверь расходы между собой и с Google Sheets, сделай XLSX.
+                                </div>
+                                <div class="tg-typing" id="hero-typing">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="tg-msg tg-msg-bot">
+                                    <span class="tg-label">📊 СВЕРКА РАСХОДОВ</span>
+                                    Обработал 85 300 ₽ по двум источникам.<br><br>
+                                    <strong class="tg-bright">Итого:</strong><br>
+                                    Партнёр 1: <span class="tg-highlight">60%</span><br>
+                                    Партнёр 2: <span class="tg-highlight">40%</span><br><br>
+                                    <span class="tg-dim">Готовый XLSX с формулами и разбивкой по месяцам — в прикреплённом файле.</span>
+                                </div>
+                                <div class="tg-msg tg-msg-bot">
+                                    <span class="tg-label">💾 ЗАПОМНИЛ</span>
+                                    Соотношение Партнёр 1/Партнёр 2: 60%/40%.<br>
+                                    <span class="tg-dim">Следующий раз — просто скажи «сверь по схеме», и я применю те же правила.</span>
+                                </div>
+                                <div class="tg-time">14:32</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pain-section" id="pain-points">
+            <div class="wrap">
+                <h2>Что МИИДАС делает на практике</h2>
+                <p class="section-sub">Не гипотетические кейсы — реальные задачи от клиентов, которые уже работают с ботом.</p>
+
+                <div class="pain-stack">
+                    <div class="pain-demo pain-demo-primary">
+                        <div class="pain-panel" id="pain-legal">
+                            <div class="ps-slide-content">
+                                <div class="ps-pain-column">
+                                    <span class="ps-emoji">⚖️</span>
+                                    <h3>Юридические документы: разбор и подготовка</h3>
+                                    <div class="ps-quote">«Разбери агентский договор — на что обратить внимание, какие пункты можно убрать или изменить. Потом — письмо из налоговой: стоит ли отвечать и как.»</div>
+                                </div>
+                                <div class="ps-mockup-column">
+                                    <div class="tg-chat">
+                                        <div class="tg-header">
+                                            <div class="tg-avatar">М</div>
+                                            <div>
+                                                <div class="tg-name">МИИДАС</div>
+                                                <div class="tg-status">на связи</div>
+                                            </div>
+                                        </div>
+                                        <div class="tg-body">
+                                            <div class="tg-inner">
+                                                <div class="tg-msg tg-msg-user">Разбери договор арендатора. На что обратить внимание?</div>
+                                                <div class="tg-msg tg-msg-bot">
+                                                    <span class="tg-label">⚖️ АНАЛИЗ ДОГОВОРА</span>
+                                                    <strong class="tg-bright">3 ключевых риска:</strong><br>
+                                                    1. Пункт 4.2 — штраф 200% при просрочке<br>
+                                                    2. Пункт 7.1 — нет условия о расторжении<br>
+                                                    3. Пункт 12 — не указан срок<br><br>
+                                                    <span class="tg-dim">Рекомендую: убрать 4.2, добавить расторжение с 30-дневным уведомлением.</span>
+                                                </div>
+                                                <div class="tg-msg tg-msg-bot">
+                                                    <span class="tg-label">📄 ПРОТОКОЛ РАЗНОГЛАСИЙ</span>
+                                                    Проект протокола разногласий готов — правки в п. 4.2, 7.1, 12.<br>
+                                                    <span class="tg-dim">DOCX с выделенными правками — в прикреплённом файле. Отправляйте контрагенту.</span>
+                                                </div>
+                                                <div class="tg-time">11:15</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-action">
+                                    <button class="cta-primary cta-clean cta-ps" data-source="legal">Попробовать бесплатно</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pain-panel" id="pain-reconcile">
+                            <div class="ps-slide-content">
+                                <div class="ps-pain-column">
+                                    <span class="ps-emoji">📊</span>
+                                    <h3>Сверка расходов из скриншотов и CSV</h3>
+                                    <div class="ps-quote">«Вот скриншоты "Проект-2024" и CSV-файл. Сверь расходы между собой и с Google Sheets. Сделай XLSX с формулами.»</div>
+                                </div>
+                                <div class="ps-mockup-column">
+                                    <div class="tg-chat">
+                                        <div class="tg-header">
+                                            <div class="tg-avatar">М</div>
+                                            <div>
+                                                <div class="tg-name">МИИДАС</div>
+                                                <div class="tg-status">на связи</div>
+                                            </div>
+                                        </div>
+                                        <div class="tg-body">
+                                            <div class="tg-inner">
+                                                <div class="tg-msg tg-msg-user">Сверь расходы по скриншотам и CSV. 85 300 ₽.</div>
+                                                <div class="tg-msg tg-msg-bot">
+                                                    <span class="tg-label">📊 СВЕРКА</span>
+                                                    Обработал 85 300 ₽.<br>
+                                                    Партнёр 1: <span class="tg-highlight">60%</span> (51 180 ₽)<br>
+                                                    Партнёр 2: <span class="tg-highlight">40%</span> (34 120 ₽)<br><br>
+                                                    <span class="tg-dim">XLSX с формулами и разбивкой по месяцам — в прикреплённом файле.</span>
+                                                </div>
+                                                <div class="tg-time">14:32</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-action">
+                                    <button class="cta-primary cta-clean cta-ps" data-source="reconcile">Попробовать бесплатно</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pain-panel" id="pain-deal">
+                            <div class="ps-slide-content">
+                                <div class="ps-pain-column">
+                                    <span class="ps-emoji">🧮</span>
+                                    <h3>Математика сделки за вечер</h3>
+                                    <div class="ps-quote">«Покупатель просит скидку 5%, говорит наличными. Рассчитай ипотеку и рассрочку от департамента — какой вариант выгоднее?»</div>
+                                </div>
+                                <div class="ps-mockup-column">
+                                    <div class="tg-chat">
+                                        <div class="tg-header">
+                                            <div class="tg-avatar">М</div>
+                                            <div>
+                                                <div class="tg-name">МИИДАС</div>
+                                                <div class="tg-status">на связи</div>
+                                            </div>
+                                        </div>
+                                        <div class="tg-body">
+                                            <div class="tg-inner">
+                                                <div class="tg-msg tg-msg-user">Сравни ипотеку и рассрочку от деп-а. Как выгоднее?</div>
+                                                <div class="tg-msg tg-msg-bot">
+                                                    <span class="tg-label">🧮 РАСЧЁТ</span>
+                                                    <strong class="tg-bright">Ипотека:</strong> ставка 22%, переплата 4,8 млн<br>
+                                                    <strong class="tg-bright">Рассрочка:</strong> 0%, но первый взнос 30%<br><br>
+                                                    <span class="tg-success">Рассрочка выгоднее на 2,3 млн</span> при нынешних ставках.
+                                                </div>
+                                                <div class="tg-time">21:04</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                                                <div class="ps-action">
+                                    <button class="cta-primary cta-clean cta-ps" data-source="deal">Попробовать бесплатно</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pain-panel" id="pain-listings">
+                            <div class="ps-slide-content">
+                                <div class="ps-pain-column">
+                                    <span class="ps-emoji">🏠</span>
+                                    <h3>Объявления для площадок — из фото презентации</h3>
+                                    <div class="ps-quote">«Вот фото из презентации объекта — сделай текст объявления и фид для Яндекс.Недвижимости».</div>
+                                </div>
+                                <div class="ps-mockup-column">
+                                    <div class="tg-chat">
+                                        <div class="tg-header">
+                                            <div class="tg-avatar">М</div>
+                                            <div>
+                                                <div class="tg-name">МИИДАС</div>
+                                                <div class="tg-status">на связи</div>
+                                            </div>
+                                        </div>
+                                        <div class="tg-body">
+                                            <div class="tg-inner">
+                                                <div class="tg-msg tg-msg-user">Фото объекта из презентации — 12 штук. Нужен текст объявления и фид для Яндекса.</div>
+                                                <div class="tg-msg tg-msg-bot">
+                                                    <span class="tg-label">🏠 ОБЪЯВЛЕНИЕ И ФИД</span>
+                                                    Готово: текст объявления и фид для Яндекс.Недвижимости.<br><br>
+                                                    <span class="tg-success">Площадка приняла фид с первого раза.</span><br>
+                                                    <span class="tg-dim">Файлы — в прикреплённых. Загружайте в Quick Deal.</span>
+                                                </div>
+                                                <div class="tg-msg tg-msg-user">Поправь площадь — там 84 м², не 78.</div>
+                                                <div class="tg-msg tg-msg-bot">
+                                                    Помню структуру фида — поправил только площадь, остальное не тронул.
+                                                </div>
+                                                <div class="tg-time">16:40</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-action">
+                                    <button class="cta-primary cta-clean cta-ps" data-source="listings">Попробовать бесплатно</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="recipes-section" id="recipes">
+            <div class="wrap">
+                <h2>Примеры рецептов</h2>
+                <p class="section-sub">Конкретные задачи, которые бот решает у клиентов каждый день. Откройте любой — увидите проблему, как бот её решил и копируемый результат.</p>
+
+                <a class="course-banner" href="/course/">
+                    <span class="course-emoji">🎓</span>
+                    <span>
+                        <h3>Бесплатный практикум: AI-агент в вашем бизнесе за 5 вечеров</h3>
+                        <p>Закрытая группа в Telegram. Каждое занятие — работа с вашими настоящими файлами и готовый результат. Пилот: 12 мест.</p>
+                    </span>
+                </a>
+
+                <div class="recipes-grid">
+                    <a class="recipe-card" href="/recipes/listings/">
+                        <span class="recipe-emoji">🏠</span>
+                        <h3>Объявления и фид из PDF</h3>
+                        <p>Презентация объекта → 8 объявлений + готовый фид за 30 секунд.</p>
+                    </a>
+                    <a class="recipe-card" href="/recipes/payment/">
+                        <span class="recipe-emoji">💳</span>
+                        <h3>Платёжки в Сбербанк</h3>
+                        <p>Скриншот выписки → 12 черновиков с проверенными ИНН и КПП.</p>
+                    </a>
+                    <a class="recipe-card" href="/recipes/refunds-reconcile/">
+                        <span class="recipe-emoji">📊</span>
+                        <h3>Сверка возвратов в Адеск</h3>
+                        <p>40 возвратов из банка → разноска по заказам + XLSX с расхождениями.</p>
+                    </a>
+                    <a class="recipe-card" href="/recipes/protocol-disagreements/">
+                        <span class="recipe-emoji">⚖️</span>
+                        <h3>Протокол разногласий</h3>
+                        <p>Договор аренды на 25 стр. → спорные пункты + формулировки за день.</p>
+                    </a>
+                    <a class="recipe-card" href="/recipes/dds-photo/">
+                        <span class="recipe-emoji">📷</span>
+                        <h3>ДДС по фото чеков</h3>
+                        <p>23 фото чеков → строки в Google Sheets с разбивкой по проектам.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="testimonials" class="testimonials-section">
+            <div class="wrap">
+                <h2>Что говорят клиенты</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar"><img src="/yana.jpg" alt="Янина Познянская" loading="lazy"></div>
+                        <div class="testimonial-text">«Я скидываю боту фото из презентации объекта — он делает текст объявления и фид для Яндекс.Недвижимости. Когда фиды загрузились с первого раза, написала ему: „ты большая умница“ 😍 Бот помнит мои форматы — каждый раз заново не объясняю».</div>
+                        <div class="testimonial-author">Янина Познянская · инвестиции в недвижимость, брокеридж · <a href="https://t.me/intheuniverseflat" target="_blank" rel="noopener" class="testimonial-link">@intheuniverseflat</a></div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar"><img src="/andrey.jpg" alt="Андрей Винницкий" loading="lazy"></div>
+                        <div class="testimonial-text">«Бот сам пересчитал выплаты инвесторам и нашёл расхождение на 2,8 млн ₽, которое мы вручную не заметили. Это уровень финдиректора, а не чат-бота.»</div>
+                        <div class="testimonial-author">Андрей Винницкий · управляющий партнёр, <a href="https://yarfintrast.ru" target="_blank" rel="noopener" class="testimonial-link">ЯрФинТраст (ЯФТ)</a></div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar"><img src="/stas.jpg" alt="Станислав Кривокорытов" loading="lazy"></div>
+                        <div class="testimonial-text">«Мне нужен был бот-рецепшн для отеля — встречать гостей и отвечать на вопросы. МИИДАС сделал за неделю то, на что раньше искали разработчика месяцами.»</div>
+                        <div class="testimonial-author">Станислав Кривокорытов · учредитель <a href="https://xn----dtbfebawhpkmbiog4acm1nb.xn--p1ai/" target="_blank" rel="noopener" class="testimonial-link">«Открытый Девелопмент»</a> · киноотель «Снято» (Джубга)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="founder" class="founder-section">
+            <div class="wrap">
+                <h2>Сделано предпринимателем для предпринимателей</h2>
+                <p class="section-sub">За МИИДАСом не стоит огромная корпорация или банк. Это продукт от
+                    предпринимателя, который устал сводить выписки вручную.</p>
+                <div class="founder-card">
+                    <img src="/founder.jpg" alt="Алексей Лещенко" class="founder-avatar">
+                    <div class="founder-info">
+                        <h3 class="founder-name">Алексей Лещенко</h3>
+                        <p class="founder-role">Основатель МИИДАС · основатель фонда <a href="https://rede-vest.ru"
+                                class="founder-link" rel="noopener">«Редевест»</a></p>
+                        <p class="founder-bio">
+                            «Я создал МИИДАС, потому что устал делать руками то, что ИИ должен делать за минуты.
+                            Скриншот выписки → готовый XLSX. Договор на 20 страниц → список рисков за секунды.
+                            А потом бот запоминает и применяет к следующему кейсу. Пишите мне лично, если хотите
+                            обсудить ваш кейс!»
+                            <a href="https://t.me/leshchenko1979" class="founder-link">@leshchenko1979</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fit" class="fit-section">
+            <div class="wrap">
+                <h2>Почему МИИДАС — не просто чат-бот</h2>
+                <p class="section-sub">Обычный ChatGPT отвечает на вопрос и забывает. МИИДАС — это агент: он помнит ваш бизнес, расширяется под ваши задачи, работает с файлами и учится на ошибках.</p>
+                <ul class="fit-points">
+                    <li><strong>Помнит между сессиями</strong> Числа, решения, форматы, пропорции — всё сохраняется. Скажите «сверь по схеме» — бот применит правила из прошлого раза без объяснений.</li>
+                    <li><strong>Расширяется под вас</strong> Скажите «сделай так же, но по-другому» — бот запомнит новый формат и применит в следующий раз. Чем дольше работаете, тем точнее результат.</li>
+                    <li><strong>Принимает файлы из чата</strong> Скриншоты, PDF, CSV, выписки — отправьте прямо в Telegram. Результат — готовый XLSX с формулами за минуты.</li>
+                    <li><strong>Говорите как исправить — бот запомнит</strong> Если результат не идеален, скажите что исправить. Бот запомнит и в следующий раз сделает правильно, без повторных объяснений.</li>
+                    <li><strong>Живёт в Telegram</strong> Не нужно скачивать приложения или запоминать пароли. Общаетесь так же, как с живым помощником.</li>
+                    <li><strong>Готовит платежи — вы подписываете</strong> Бот сверит ваши таблицы и счета — и черновики платежей появятся в вашем банке. Вам остаётся проверить и подписать. На основном тарифе.</li>
+                    <li><strong>Находит по всем вашим источникам</strong> «Где акт по Ахтари?» — бот ищет в почте, на дисках и в файлах чата, проверяет комплектность и приносит документ.</li>
+                    <li><strong>В 10 раз дешевле штата</strong> Помощник руководителя за ₽3 000/мес вместо сотрудника с зарплатой от ₽30 000. 14 дней бесплатно, без привязки карты.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="pricing">
+            <div class="wrap">
+                <h2>Простой и честный тариф</h2>
+                <p class="section-sub">Базовые функции для старта без лимитов. Пробный период 14 дней, карта не нужна.
+                </p>
+
+                <div class="pricing-single">
+                    <div class="pricing-card">
+                        <div class="plan-name">МИИДАС — ваш помощник руководителя</div>
+                        <div class="price">₽3 000<small>/мес</small></div>
+                        <div class="trial-badge">14 дней бесплатно · карта не нужна</div>
+                        <div class="savings-badge">Экономит ₽12 000–24 000 в месяц на рутине</div>
+                        <ul class="features">
+                            <li><span class="icon">✓</span> Сразу в Telegram-группе: документы, договоры, таблицы,
+                                налоги
+                            </li>
+                            <li><span class="icon">✓</span> Личный бот: черновики платежей в вашем банке, файлы в вашем Google — на основном тарифе
+                            </li>
+                            <li class="pricing-footnote muted">МИИДАС берёт на себя ежедневную рутину с опорой на ваш
+                                контекст.</li>
+                        </ul>
+                        <button class="cta-primary cta-clean" id="pricingClaimBtn" type="button">Попробовать
+                            бесплатно</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="wrap">
+                <h2>Вопросы и ответы</h2>
+
+                <div class="faq">
+                    <details>
+                        <summary>МИИДАС — это ИИ?</summary>
+                        <p>Да. Это ИИ-помощник руководителя в Telegram: разбирает договоры, сверяет расходы из файлов,
+                            считает математику сделок — и всё это помнит между сессиями. Подпись и юридическую
+                            ответственность оставляете себе.</p>
+                    </details>
+                    <details>
+                        <summary>Как начинается пробный период?</summary>
+                        <p>Один клик на сайте — и вы в готовой Telegram-группе с МИИДАС. Пробный период — 14 дней.
+                            Просто отправьте файл, скриншот или опишите задачу — бот покажет результат за минуты.</p>
+                    </details>
+                    <details>
+                        <summary>Какие файлы принимает МИИДАС?</summary>
+                        <p>Скриншоты и фото таблиц, PDF (включая презентации объектов), CSV, выписки банков
+                            (Т-Банк, Сбер, Альфа, Точка, ВТБ и другие). Отправьте
+                            прямо в чат — бот распознает, обработает и вернёт готовый XLSX с формулами.</p>
+                    </details>
+                    <details>
+                        <summary>А это безопасно? Что с моими данными?</summary>
+                        <p>Данные бота хранятся на наших серверах — файлы, память и накопленный контекст, — чтобы МИИДАС
+                            помнил ваш бизнес между сессиями. Исходные выписки и документы <strong>не</strong> удаляются
+                            сразу после анализа: они нужны для продолжения работы. Если вы отключите МИИДАС, контейнер
+                            и том с данными удаляются: файлы, память и контекст бота пропадают.</p>
+                    </details>
+                    <details>
+                        <summary>Я не разбираюсь в финансах — мне подойдёт?</summary>
+                        <p>Да, именно для этого МИИДАС и создан. Он общается простым языком, без бухгалтерского жаргона.
+                            Если вы умеете пользоваться обычным мобильным банком — в отчётах МИИДАСа разберётесь за 10
+                            секунд.</p>
+                    </details>
+                    <details>
+                        <summary>Чем это отличается от обычного ChatGPT?</summary>
+                        <p>ChatGPT отвечает на разовые запросы и забывает всё после закрытия окна. МИИДАС помнит ваш
+                            бизнес между сессиями: числа, решения, форматы. Скажите «сверь по схеме» — бот применит
+                            правила из прошлого раза без объяснений. Он также принимает файлы из чата и делает готовые
+                            XLSX — ChatGPT этого не умеет.</p>
+                    </details>
+                    <details>
+                        <summary>Чего МИИДАС НЕ умеет?</summary>
+                        <p>МИИДАС — это помощник, а не замена бухгалтеру или юристу. Он не подаёт декларации в ФНС,
+                            не ведёт кадровый учёт и не принимает юридических решений за вас. Подпись и ответственность
+                            — всегда ваши. Бот считает, структурирует и запоминает — вы решаете.</p>
+                    </details>
+                    <details>
+                        <summary>Подходит ли МИИДАС при УСН / ОСН / патенте?</summary>
+                        <p>Да. МИИДАС работает с любым налоговым режимом. Он считает реальные деньги бизнеса и отвечает
+                            на вопросы с учётом ваших реквизитов и режима из истории чата — без шаблонных советов
+                            «для всех».</p>
+                    </details>
+                    <details>
+                        <summary>Может ли МИИДАС разобрать договор?</summary>
+                        <p>Да. Отправьте договор в чат — бот найдёт рискованные пункты, предложит изменения и объяснит
+                            на простом языке. Юридические, агентские, арендные — любые.</p>
+                    </details>
+                    <details>
+                        <summary>А если спор дошёл до суда?</summary>
+                        <p>Бот подготовит проекты документов: претензию контрагенту, отзыв на иск, ходатайство.
+                            Стратегия дела и подача — за вами или вашим юристом: МИИДАС не заменяет юриста,
+                            он снимает рутину подготовки бумаг.</p>
+                    </details>
+                    <details>
+                        <summary>А если я уже веду учёт в 1С, Excel или Adesk?</summary>
+                        <p>Вам не придётся ничего менять. МИИДАС дополняет привычные инструменты: быстро структурирует
+                            хаос из выписок и соберёт наглядную аналитику прямо в телефоне. Считайте его вашим
+                            оперативным карманным дашбордом.</p>
+                    </details>
+                    <details>
+                        <summary>Можно ли отказаться от пробного периода?</summary>
+                        <p>Да. Карта не нужна — скрытых списаний нет. Чтобы прекратить, просто выйдите из группы.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <h2>Отправьте файл — получите результат за минуты</h2>
+            <p>Первые результаты — уже через 5 минут прямо в вашем телефоне. 14 дней бесплатно. Без карт и скрытых
+                условий.</p>
+            <button class="cta-primary cta-clean" id="finalClaimBtn" type="button">Попробовать МИИДАС в
+                Telegram</button>
+        </section>
+
+    </main>
+
+    <div id="claimStatus" class="claim-status claim-toast hidden" role="status" aria-live="polite"></div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div><strong>МИИДАС</strong> — ИИ-помощник руководителя · <a href="https://miidas.ru">miidas.ru</a>
+        </div>
+        <div class="footer-links">
+            <a href="https://t.me/leshchenko1979">Связаться с основателем</a>
+            <a href="mailto:leshchenko@gmail.com">leshchenko@gmail.com</a>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=110355947', 'ym');
+
+        ym(110355947, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true });
+    </script>
+    <noscript>
+        <div><img loading="lazy" src="https://mc.yandex.ru/watch/110355947" style="position:absolute; left:-9999px;"
+                alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+</body>
+
+</html>

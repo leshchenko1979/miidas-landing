@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0c0c'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='36' fill='%233db4ff'%3EM%3C/text%3E%3C/svg%3E">
+
+    <title>Как разнести возвраты по заказам в Адеск — МИИДАС</title>
+    <meta name="description" content="Файл возвратов из банка → сверка с заказами в Адеск по номеру заказа → XLSX с подтверждёнными возвратами. Без ручной сверки и Excel-формул.">
+    <meta property="og:title" content="Как разнести возвраты по заказам в Адеск — МИИДАС">
+    <meta property="og:description" content="Файл возвратов из банка → сверка с заказами в Адеск по номеру заказа → XLSX с подтверждёнными возвратами. Без ручной сверки и Excel-формул.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://miidas.ru/recipes/refunds-reconcile/">
+    <meta property="og:image" content="https://miidas.ru/og-image.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="https://miidas.ru/recipes/refunds-reconcile/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Shared design-token layer from main landing -->
+    <link rel="stylesheet" href="../../style.css">
+    <!-- Recipe-specific overrides (uses the same tokens) -->
+    <link rel="stylesheet" href="../../recipes/recipe.css">
+</head>
+
+<body>
+    <nav class="landing-nav" aria-label="Навигация">
+        <a href="/" class="nav-brand">МИИДАС</a>
+        <button type="button" class="nav-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-links">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+            <a href="/#pain-points">Как работает</a>
+            <a href="/#testimonials">Отзывы</a>
+            <a href="/#pricing">Тариф</a>
+            <a href="/#faq">Вопросы</a>
+        </div>
+    </nav>
+
+    <main class="recipe-page">
+        <a href="/recipes/" class="recipe-back">← Все рецепты</a>
+        <p class="recipe-eyebrow">Рецепт</p>
+        <h1>Как разнести возвраты по заказам в Адеск</h1>
+
+        <!-- § Проблема -->
+        <section class="recipe-section">
+            <h2>Проблема</h2>
+            <p>За месяц — 40 возвратов от покупателей. Менеджер вручную открывает Адеск, ищет каждый заказ по номеру, проставляет статус «Возврат проведён». На один возврат — 5 минут. К концу сверки глаза в кучу, и три возврата вы точно потеряли.</p><p>Потом бухгалтерия спрашивает, почему у них расхождение на 18 400 ₽.</p>
+        </section>
+
+        <!-- § Что делает бот -->
+        <section class="recipe-section">
+            <h2>Что делает бот</h2>
+            <div class="tg-chat"><div class="tg-msg-user">[XLSX: выгрузка возвратов из банка, 40 строк]</div><div class="tg-msg-bot">Готово. 38 возвратов разнесены по заказам в Адеск.
+
+2 расхождения:
+— Заказ #А-2341: в банке 4 200 ₽, в Адеске 4 500 ₽
+— Заказ #А-2390: не найден в Адеске, проверить вручную.
+
+Скачать XLSX с разноской: [ссылка]</div></div>
+        </section>
+
+        <!-- § Копируйте шаблон + CTA -->
+        <section class="recipe-section">
+            <h2>Копируйте шаблон</h2>
+            <p>Так выглядит строка в итоговом XLSX. Бот отмечает подтверждённые, расхождения и не найденные заказы отдельными статусами.</p>
+            <pre class="artifact">| № заказа | Сумма банк | Сумма Адеск | Статус              | Действие        |
+|----------|------------|-------------|---------------------|-----------------|
+| А-2280   | 3 200 ₽    | 3 200 ₽    | разнесено           | —               |
+| А-2295   | 5 800 ₽    | 5 800 ₽    | разнесено           | —               |
+| А-2341   | 4 200 ₽    | 4 500 ₽    | расхождение суммы   | проверить вручную|
+| А-2390   | 7 400 ₽    | —          | не найден в Адеске  | проверить вручную|
+| А-2412   | 1 900 ₽    | 1 900 ₽    | разнесено           | —               |
+
+Итого разнесено: 38 из 40 на сумму 184 300 ₽.
+Расхождения на контроль: 2 на сумму 11 600 ₽.</pre>
+        </section>
+
+        <div class="recipe-cta">
+            <button class="cta-primary cta-clean" type="button" data-source="recipe_refunds-reconcile">
+                Попробовать в Telegram за 1 минуту
+            </button>
+            <p class="cta-microcopy">14 дней бесплатно, без карты. Никаких автосписаний.</p>
+        </div>
+
+        <p id="claimStatus" class="claim-status claim-toast hidden" role="status" aria-live="polite"></p>
+    </main>
+
+    <footer>
+        <div><strong>МИИДАС</strong> — ИИ-помощник руководителя · <a href="https://miidas.ru">miidas.ru</a></div>
+        <div class="footer-links">
+            <a href="https://t.me/leshchenko1979">Связаться с основателем</a>
+            <a href="mailto:leshchenko@gmail.com">leshchenko@gmail.com</a>
+        </div>
+    </footer>
+
+    <script src="../../app.js"></script>
+</body>
+
+</html>
