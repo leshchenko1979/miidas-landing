@@ -77,78 +77,37 @@ function reachGoal(name) {
     }
 }
 
-/** https://t.me/+HASH → tg://join?invite=HASH; fallback keeps the https URL. */
-function inviteOpenUrls(httpsUrl) {
-    var m = String(httpsUrl || '').match(
-        /(?:t\.me|telegram\.me)\/(?:\+|joinchat\/)([A-Za-z0-9_-]+)/
-    );
+function botOpenUrls(source) {
+    const startParam = source ? 'claim_' + encodeURIComponent(source) : 'claim_landing';
     return {
-        primary: m ? ('tg://join?invite=' + m[1]) : httpsUrl,
-        fallback: httpsUrl
+        primary: 'tg://resolve?domain=opencrabs_manager_bot&start=' + startParam,
+        fallback: 'https://t.me/opencrabs_manager_bot?start=' + startParam
     };
 }
 
-function openInvite(httpsUrl) {
-    if (!httpsUrl) return;
-    var urls = inviteOpenUrls(httpsUrl);
-    if (!openTgGoalSent) {
-        openTgGoalSent = true;
-        reachGoal('miidas_join_click');
-    }
-    // Schedule https fallback before navigate so a cancelled timer is intentional if we leave.
+async function claimAccess(event) {
+    if (claimBusy) return;
+    claimBusy = true;
+    const btn = event.currentTarget;
+    const source = btn.dataset.source || 'landing';
+
+    reachGoal('miidas_join_click');
+    reachGoal('claim_' + source);
+
+    const urls = botOpenUrls(source);
+
     clearFallbackTimer();
     fallbackRevealTimer = setTimeout(function () {
         fallbackRevealTimer = null;
         setClaimStatus(
-            'Если Telegram не открылся (из РФ нужен VPN):',
+            'Если Telegram не открылся (из РФ может потребоваться VPN):',
             'info',
             urls.fallback
         );
+        claimBusy = false;
     }, 1500);
+
     window.location.href = urls.primary;
-}
-
-async function claimAccess(event) {
-    if (claimBusy || claimDone) return;
-    claimBusy = true;
-    const btn = event.currentTarget;
-    const source = btn.dataset.source || '';
-    setClaimStatus('Резервируем группу…', 'info');
-    setClaimButtonsDisabled(true);
-    openTgGoalSent = false;
-
-    try {
-        const ymClientId = await getMetrikaClientId(500);
-        let body = '';
-        if (source) {
-            body = 'source=' + encodeURIComponent(source);
-        }
-        if (ymClientId) {
-            body += (body ? '&' : '') + 'ym_client_id=' + encodeURIComponent(ymClientId);
-        }
-        const resp = await fetch('/cgi/claim', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: body
-        });
-        const data = await resp.json();
-
-        if (data.invite_link) {
-            claimDone = true;
-            setClaimStatus('');
-            openInvite(data.invite_link);
-            return;
-        }
-        if (data.error) {
-            setClaimStatus(data.message || data.error, 'error');
-        } else {
-            setClaimStatus('Неизвестная ошибка. Попробуйте позже.', 'error');
-        }
-    } catch (e) {
-        setClaimStatus('Ошибка соединения. Попробуйте позже.', 'error');
-    }
-    claimBusy = false;
-    setClaimButtonsDisabled(false);
 }
 
 // Event listeners (replaces onclick attributes)
