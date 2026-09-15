@@ -16,8 +16,8 @@
     font-family: var(--font-display);
     font-size: 13px;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    /* text-transform: uppercase removed for craft-floor */
     color: var(--primary);
     margin: 0 0 12px;
 }
@@ -77,7 +77,7 @@
 
 .recipe-section .tg-chat .tg-msg-user {
     background: var(--primary);
-    color: var(--text-bright);
+    color: oklch(0.1 0 0);
     padding: 8px 12px;
     border-radius: 12px 12px 4px 12px;
     margin-bottom: 8px;

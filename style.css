@@ -66,7 +66,7 @@
         }
 
         .hero-mockup .tg-chat {
-            box-shadow: 0 24px 64px oklch(0 0 0 / 0.5);
+            box-shadow: 0 12px 24px oklch(0 0 0 / 0.5);
         }
 
         .tg-chat {
@@ -76,7 +76,8 @@
             padding: 0;
             max-width: 380px;
             margin: 0 auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px oklch(0.68 0.13 220 / 0.15);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            border: 1px solid oklch(0.68 0.13 220 / 0.2);
             overflow: hidden;
             font-family: var(--font-body);
         }
@@ -94,7 +95,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), oklch(0.78 0.1 220));
+            background: linear-gradient(135deg, oklch(0.48 0.16 230), oklch(0.38 0.14 235));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -225,7 +226,7 @@
 
         .tg-time {
             font-size: 0.65rem;
-            color: #555566;
+            color: #8e95aa;
             text-align: right;
             margin-top: 2px;
         }
@@ -330,7 +331,7 @@
             gap: 8px;
             padding: 16px 32px;
             background: var(--primary);
-            color: var(--text-bright);
+            color: oklch(0.1 0 0);
             text-decoration: none;
             font-family: var(--font-body);
             font-size: 1.05rem;
@@ -343,23 +344,22 @@
                 transform 0.2s var(--ease-out),
                 box-shadow 0.2s var(--ease-out);
             box-shadow:
-                0 4px 20px oklch(0 0 0 / 0.4),
-                0 2px 16px oklch(0.68 0.13 220 / 0.28);
+                0 4px 20px oklch(0 0 0 / 0.45),
+                0 1px 2px oklch(0 0 0 / 0.3);
         }
 
         .cta-primary:hover {
             background: var(--primary-hover);
             transform: translateY(-2px);
             box-shadow:
-                0 8px 28px oklch(0 0 0 / 0.45),
-                0 4px 20px oklch(0.68 0.13 220 / 0.32);
+                0 8px 28px oklch(0 0 0 / 0.55),
+                0 2px 4px oklch(0 0 0 / 0.3);
         }
 
         .cta-primary:active {
             transform: translateY(1px) scale(0.98);
             box-shadow:
-                0 2px 12px oklch(0 0 0 / 0.4),
-                0 1px 8px oklch(0.68 0.13 220 / 0.2);
+                0 2px 8px oklch(0 0 0 / 0.4);
         }
 
         .cta-secondary {
@@ -792,9 +792,7 @@
             border-radius: 20px;
             padding: 40px 32px;
             text-align: center;
-            box-shadow:
-                0 12px 36px oklch(0 0 0 / 0.35),
-                0 0 0 1px oklch(0.68 0.13 220 / 0.08);
+            box-shadow: 0 4px 12px oklch(0 0 0 / 0.35);
         }
 
         .pricing-card .plan-name {
@@ -1324,22 +1322,44 @@
             transform: none;
         }
 
+
+        /* BROWSER SURFACES — craft floor */
+        ::selection {
+            background: oklch(0.68 0.13 220 / 0.35);
+            color: var(--text-bright);
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        /* Reduced motion: intentional alternative that preserves state without breaking */
         @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto !important;
+            }
 
             *,
             *::before,
             *::after {
-                animation-duration: 0.01ms !important;
+                animation-duration: 0.001ms !important;
                 animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
+                transition-duration: 0.001ms !important;
             }
 
             .cta-primary:hover,
             .cta-primary:active {
-                transform: none;
+                transform: none !important;
             }
         }
+
 
         /* MOCKUP ANIMATION — single system, JS-controlled */
         .tg-typing {
@@ -1358,9 +1378,9 @@
         .tg-typing span {
             width: 6px;
             height: 6px;
-            background: #555566;
-            border-radius: 50%;
-            animation: dotBounce 1.2s ease-in-out infinite;
+            background: #8e95aa;
+            border-radius: 2px;
+            opacity: 0.7;
         }
 
         .tg-typing span:nth-child(2) {
@@ -1401,16 +1421,12 @@
             }
         }
 
-        @keyframes dotBounce {
-
-            0%,
-            60%,
-            100% {
-                transform: translateY(0);
+        @keyframes dotFade {
+            0%, 80%, 100% {
+                opacity: 0.3;
             }
-
-            30% {
-                transform: translateY(-4px);
+            40% {
+                opacity: 0.9;
             }
         }
 
@@ -1431,7 +1447,7 @@
 
         .tg-status-slot {
             min-height: 0;
-            transition: min-height 0.3s ease;
+            transition: opacity 0.25s var(--ease-out);
         }
 
         .tg-status-slot:empty {
@@ -1591,7 +1607,8 @@
         .pl-bar {
             height: 100%;
             border-radius: 10px;
-            transition: width 0.6s ease;
+            transform-origin: left center;
+            transition: transform 0.4s var(--ease-out);
         }
 
         .pl-bar.positive {
@@ -2203,13 +2220,13 @@
         .product-card:hover {
             transform: translateY(-4px);
             border-color: var(--border-strong);
-            box-shadow: 0 16px 40px oklch(0 0 0 / 0.4);
+            box-shadow: 0 6px 12px oklch(0 0 0 / 0.45);
         }
 
         .product-card.featured {
             background: linear-gradient(180deg, oklch(0.18 0.02 220) 0%, var(--surface) 100%);
             border-color: var(--primary);
-            box-shadow: 0 0 30px oklch(0.68 0.13 220 / 0.18);
+            box-shadow: 0 6px 12px oklch(0 0 0 / 0.45);
         }
 
         .product-badge {
@@ -2220,7 +2237,7 @@
             letter-spacing: 0.08em;
             padding: 4px 10px;
             border-radius: 6px;
-            margin-bottom: 16px;
+            margin: 4px 0 16px;
             width: fit-content;
             background: oklch(1 0 0 / 0.06);
             color: var(--text-dim);
@@ -2348,7 +2365,7 @@
             border: 1px solid var(--border);
         }
 
-        .case-meta h4 {
+        .case-meta h3, .case-meta h4 {
             font-size: 1.05rem;
             font-weight: 700;
             color: var(--text-bright);
