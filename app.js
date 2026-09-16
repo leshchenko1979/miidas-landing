@@ -85,29 +85,108 @@ function botOpenUrls(source) {
     };
 }
 
+function inviteToTgUri(inviteLink) {
+    if (!inviteLink) return null;
+    const match = inviteLink.match(/https:\/\/t\.me\/\+(.+)/);
+    if (match && match[1]) {
+        return 'tg://join?invite=' + match[1];
+    }
+    return inviteLink;
+}
+
+const CLAIM_API_ENDPOINT = 'https://miidas.l1979.ru/cgi/claim';
+
 async function claimAccess(event) {
     if (claimBusy) return;
     claimBusy = true;
+    setClaimButtonsDisabled(true);
     const btn = event.currentTarget;
     const source = btn.dataset.source || 'landing';
 
     reachGoal('miidas_join_click');
     reachGoal('claim_' + source);
 
-    const urls = botOpenUrls(source);
+    setClaimStatus('Подбираем свободную группу с МИИДАС...', 'info');
 
-    clearFallbackTimer();
-    fallbackRevealTimer = setTimeout(function () {
-        fallbackRevealTimer = null;
-        setClaimStatus(
-            'Если Telegram не открылся (из РФ может потребоваться VPN):',
-            'info',
-            urls.fallback
-        );
-        claimBusy = false;
-    }, 1500);
+    const ymClientId = await getMetrikaClientId(1200);
+    const fallbackUrls = botOpenUrls(source);
 
-    window.location.href = urls.primary;
+    const bodyParams = new URLSearchParams();
+    bodyParams.append('source', source);
+    if (ymClientId) {
+        bodyParams.append('ym_client_id', ymClientId);
+    }
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+    try {
+        const response = await fetch(CLAIM_API_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: bodyParams.toString(),
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+            throw new Error('Claim response status: ' + response.status);
+        }
+
+        const data = await response.json();
+        if (data && data.invite_link) {
+            reachGoal('claim_success');
+            const tgUri = inviteToTgUri(data.invite_link);
+            setClaimStatus('Группа готова! Переходим в Telegram...', 'success', data.invite_link);
+
+            clearFallbackTimer();
+            fallbackRevealTimer = setTimeout(function () {
+                fallbackRevealTimer = null;
+                setClaimStatus(
+                    'Если группа не открылась автоматически, нажмите на ссылку:',
+                    'info',
+                    data.invite_link
+                );
+                claimBusy = false;
+                setClaimButtonsDisabled(false);
+            }, 2500);
+
+            if (tgUri && tgUri.startsWith('tg://')) {
+                window.location.href = tgUri;
+                setTimeout(function () {
+                    if (document.visibilityState === 'visible') {
+                        window.location.href = data.invite_link;
+                    }
+                }, 800);
+            } else {
+                window.location.href = data.invite_link;
+            }
+            return;
+        } else {
+            throw new Error(data && data.error ? data.error : 'Empty invite_link');
+        }
+    } catch (err) {
+        clearTimeout(timeoutId);
+        console.warn('Claim API failed or timed out, falling back to manager bot:', err);
+        reachGoal('claim_fallback_bot');
+        setClaimStatus('Переходим к ассистенту в Telegram...', 'info', fallbackUrls.fallback);
+
+        clearFallbackTimer();
+        fallbackRevealTimer = setTimeout(function () {
+            fallbackRevealTimer = null;
+            setClaimStatus(
+                'Если Telegram не открылся автоматически, откройте ссылку:',
+                'info',
+                fallbackUrls.fallback
+            );
+            claimBusy = false;
+            setClaimButtonsDisabled(false);
+        }, 2000);
+
+        window.location.href = fallbackUrls.primary;
+    }
 }
 
 // Event listeners (replaces onclick attributes)
