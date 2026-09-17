@@ -1,6 +1,6 @@
 /* factory.css — styles for /factory/ (Tier 3: фабрики агентов под ключ).
    Reuses the tokens and components defined in ../style.css (:root custom
-   properties, .umbrella-section, .product-card, .case-grid, .steps, .faq-list,
+   properties, .umbrella-section, .product-card, .case-grid, .steps,
    .tg-chat, .cta-row/.cta-primary). Only the pieces this page needs are new. */
 
 /* ── Page shell ── */
