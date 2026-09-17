@@ -46,7 +46,45 @@
         </section>
 
         <section class="recipe-section">
-            <h2>Программа</h2>
+            <h2>Чат против Агента: в чём разница</h2>
+            <p>Обычный чат (ChatGPT, Claude) генерирует текст в ответ на сообщение, но ничего не делает сам: не может проверить файлы по регламенту, сохранить данные в таблицу или отправить готовый документ. Агент выполняет работу автономно с помощью инструментов.</p>
+            <div class="table-container" style="overflow-x: auto; margin-top: 16px;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--border); color: var(--text-bright);">
+                            <th style="padding: 10px 12px;">Критерий</th>
+                            <th style="padding: 10px 12px;">Обычный чат</th>
+                            <th style="padding: 10px 12px; color: var(--primary);">AI-агент (МИИДАС)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 10px 12px; font-weight: 600;">Действия и файлы</td>
+                            <td style="padding: 10px 12px; color: var(--text-muted);">Только текст на экране. Копируете руками.</td>
+                            <td style="padding: 10px 12px;">Создает реальные файлы (.docx, .xlsx, .pptx) и правит документы.</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 10px 12px; font-weight: 600;">Память и правила</td>
+                            <td style="padding: 10px 12px; color: var(--text-muted);">Забывает контекст и регламенты при новом запросе.</td>
+                            <td style="padding: 10px 12px;">Помнит стоп-факторы, шаблоны и правила компании между сессиями.</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 10px 12px; font-weight: 600;">Бизнес-системы</td>
+                            <td style="padding: 10px 12px; color: var(--text-muted);">Изолирован от ваших баз и таблиц.</td>
+                            <td style="padding: 10px 12px;">Напрямую пишет в Google Таблицы ДДС, 1С и классифайды.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 12px; font-weight: 600;">Автономия</td>
+                            <td style="padding: 10px 12px; color: var(--text-muted);">Ждет ручной ввод на каждый шаг.</td>
+                            <td style="padding: 10px 12px;">Запускает расчеты, регулярные сводки и действия в 1 клик.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="recipe-section">
+            <h2>Программа практикума</h2>
             <ol class="course-program">
                 <li><strong>Чат и агент — в чём принципиальная разница.</strong> Почему чат просто пишет текст, а агент выполняет работу инструментами (Tools &amp; Side effects). На занятии: входящий скан или прайс превращается не просто в слова на экране, а в готовый структурированный файл для импорта в CRM и на классифайды.</li>
                 <li><strong>Договоры, регламенты и протоколы разногласий.</strong> Как агент помнит правила и стоп-факторы вашей компании без повторных объяснений (долгосрочная память). На занятии: агент сопоставляет 20-страничный PDF с политикой безопасности и генерирует готовый файл с протоколом разногласий (.docx) и безопасными формулировками на замену.</li>
