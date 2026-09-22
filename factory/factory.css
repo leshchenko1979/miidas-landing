@@ -822,10 +822,10 @@
 }
 
 .fx-fit-no li::before {
-    content: "—";
+    content: "✕";
     position: absolute;
     left: 0;
-    color: var(--text-dim);
+    color: var(--warning);
     font-weight: 700;
 }
 
@@ -989,4 +989,3 @@
         font-size: 1.3rem;
     }
 }
-
