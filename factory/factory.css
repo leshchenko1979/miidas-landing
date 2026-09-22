@@ -132,6 +132,13 @@
 /* ── Latency figure (the queue finding) ── */
 .fx-latency {
     margin: 0;
+    /* Single source of truth for the "queue waiting" colour: the bar segment
+       and its legend swatch both read this, so they can never drift apart.
+       At alpha 0.50 the fill clears WCAG 1.4.11's 3:1 for meaningful non-text
+       graphics on both surfaces it lands on (track 3.12:1, page background
+       3.10:1; the measured floor is 0.49) and stays 2.27:1 distinct from the
+       work sliver. */
+    --fx-wait-fill: oklch(0.78 0.13 75 / 0.50);
 }
 
 .fx-latency-head {
@@ -174,7 +181,7 @@
 
 .fx-track-wait {
     flex: 1 1 auto;
-    background: oklch(0.68 0.13 220 / 0.06);
+    background: var(--fx-wait-fill);
     border-left: 1px solid var(--border);
     transform-origin: left center;
     animation: fx-wait-fill 900ms var(--ease-out) both;
@@ -214,8 +221,7 @@
 }
 
 .fx-swatch.is-wait {
-    background: oklch(0.68 0.13 220 / 0.22);
-    border: 1px solid var(--border);
+    background: var(--fx-wait-fill);
 }
 
 /* ── Callout (neutral card; the label carries the warning signal) ── */
