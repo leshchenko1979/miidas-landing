@@ -25,6 +25,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Content gate tests
+        run: python3 tests/test_content_gate.py
+
+      - name: Content gate (rejected words)
+        run: python3 tools/content_gate.py
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
