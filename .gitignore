@@ -1,0 +1,4 @@
+# The repo root IS the published site (the Pages workflow uploads '.'),
+# so anything left lying around here ends up on miidas.ru.
+__pycache__/
+*.pyc
