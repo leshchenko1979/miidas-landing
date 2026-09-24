@@ -162,6 +162,27 @@
     color: var(--primary);
 }
 
+/* ── Cross-section note ── */
+.recipe-note {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-dim);
+    margin: 32px 0 0;
+    max-width: 74ch;
+}
+
+.recipe-note a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-strong);
+}
+
+.recipe-note a:hover {
+    color: var(--text-bright);
+    border-color: var(--primary);
+}
+
 /* ── Mobile ── */
 @media (max-width: 720px) {
     .recipe-page {
