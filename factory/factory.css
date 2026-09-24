@@ -171,10 +171,10 @@
     border: 1px solid var(--border);
 }
 
-/* The work sliver keeps its true 3.6% share; the min-width is a rendering
-   floor only (it never engages above a ~84px track), so the bar cannot lie. */
+/* The work sliver keeps its true 4% share; the min-width is a rendering
+   floor only (it never engages above a ~75px track), so the bar cannot lie. */
 .fx-track-work {
-    flex: 0 0 3.6%;
+    flex: 0 0 4%;
     min-width: 3px;
     background: var(--primary);
 }
