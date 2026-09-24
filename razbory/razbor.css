@@ -1,0 +1,328 @@
+/* razbor.css — styles for /razbory/* pages.
+   Reuses the CSS custom-property tokens defined in ../style.css (:root).
+   Same section pattern as recipes/recipe.css and factory/factory.css:
+   the shared token layer does the design system, this file adds only the
+   long-form reading surface and the two funnel blocks. */
+
+/* ── Page shell ── */
+.rz-page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+    color: var(--text);
+}
+
+.rz-back {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: color 0.15s var(--ease-out);
+}
+
+.rz-back:hover {
+    color: var(--primary);
+}
+
+.rz-eyebrow {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--primary);
+    margin: 0 0 12px;
+}
+
+.rz-page h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.25rem);
+    line-height: 1.2;
+    font-weight: 800;
+    color: var(--text-bright);
+    margin: 0 0 24px;
+    text-wrap: balance;
+    letter-spacing: -0.03em;
+}
+
+.rz-lede {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0 0 40px;
+}
+
+/* ── The answer, stated once and up front ── */
+.rz-answer {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1.5;
+    font-weight: 600;
+    color: var(--text-bright);
+    margin: 0 0 40px;
+    padding: 24px 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-wrap: pretty;
+}
+
+/* ── Section card ── */
+.rz-section {
+    margin: 0 0 40px;
+    padding: 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+.rz-section h2 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+}
+
+.rz-section h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin: 24px 0 8px;
+}
+
+.rz-section p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0 0 12px;
+    text-wrap: pretty;
+}
+
+.rz-section p:last-child {
+    margin-bottom: 0;
+}
+
+.rz-section ul {
+    margin: 0 0 12px;
+    padding-left: 20px;
+}
+
+.rz-section li {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.rz-section li:last-child {
+    margin-bottom: 0;
+}
+
+.rz-section strong {
+    color: var(--text-bright);
+    font-weight: 700;
+}
+
+/* ── Numbered boundary list (unit 2) ── */
+.rz-boundary {
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+    counter-reset: rz-boundary;
+}
+
+.rz-boundary li {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 16px;
+    counter-increment: rz-boundary;
+}
+
+.rz-boundary li::before {
+    content: counter(rz-boundary);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--primary);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.rz-boundary li:last-child {
+    margin-bottom: 0;
+}
+
+/* ── Telegram funnel block ── */
+.rz-tg {
+    margin: 0 0 40px;
+    padding: 24px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+.rz-tg p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-dim);
+    margin: 0 0 16px;
+}
+
+.rz-tg-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.rz-tg-link {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    padding: 10px 18px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    transition: background 0.15s var(--ease-out), color 0.15s var(--ease-out);
+}
+
+.rz-tg-link:hover {
+    background: var(--accent-soft);
+    color: var(--text-bright);
+}
+
+/* ── Related posts / pages ── */
+.rz-more {
+    margin: 0 0 40px;
+}
+
+.rz-more h2 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin: 0 0 12px;
+}
+
+.rz-more ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rz-more li {
+    margin-bottom: 10px;
+}
+
+.rz-more a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-strong);
+    transition: color 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
+}
+
+.rz-more a:hover {
+    color: var(--text-bright);
+    border-color: var(--primary);
+}
+
+/* ── CTA ── */
+.rz-cta {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.rz-cta .cta-microcopy {
+    margin-top: 12px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* ── Index page ── */
+.rz-index-intro {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0 0 40px;
+}
+
+.rz-grid-heading {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin: 0 0 20px;
+    letter-spacing: -0.02em;
+}
+
+.rz-subscribe {
+    margin: 0 0 48px;
+    padding: 24px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rz-subscribe p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--text);
+    margin: 0;
+    max-width: 460px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 720px) {
+    .rz-page {
+        padding: 32px 16px 64px;
+    }
+
+    .rz-page h1 {
+        font-size: 1.6rem;
+    }
+
+    .rz-section,
+    .rz-tg,
+    .rz-answer,
+    .rz-subscribe {
+        padding: 20px;
+    }
+
+    .rz-answer {
+        font-size: 1.1rem;
+    }
+
+    .rz-tg-row {
+        flex-direction: column;
+    }
+
+    .rz-tg-link {
+        text-align: center;
+    }
+}

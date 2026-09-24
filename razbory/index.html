@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0c0c'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='36' fill='%233db4ff'%3EM%3C/text%3E%3C/svg%3E">
+
+    <title>Разборы: отдел из агентов без обещаний — МИИДАС</title>
+    <meta name="description" content="Разборы по одному вопросу за раз: чем работа отличается от ответа, в каких случаях мы отказываемся и что потребуется на вашей стороне. С границами, цифрами и датами.">
+    <meta property="og:title" content="Разборы: отдел из агентов без обещаний — МИИДАС">
+    <meta property="og:description" content="Один вопрос за раз: чем работа отличается от ответа, где мы отказываемся, что потребуется на вашей стороне.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://miidas.ru/razbory/">
+    <meta property="og:image" content="https://miidas.ru/og-image.png">
+
+    <link rel="canonical" href="https://miidas.ru/razbory/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css?v=1789518342">
+    <link rel="stylesheet" href="razbor.css">
+</head>
+<body>
+    <nav class="landing-nav" aria-label="Навигация">
+        <a href="/" class="nav-brand">МИИДАС</a>
+        <button type="button" class="nav-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-links">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+            <a href="/">Главная</a>
+            <a href="/factory/">Фабрики агентов</a>
+            <a href="/recipes/">Рецепты</a>
+            <a href="/razbory/">Разборы</a>
+            <a href="/course/">Практикум</a>
+            <a href="https://t.me/leshchenko1979">Связаться</a>
+        </div>
+    </nav>
+
+    <main class="rz-page">
+        <p class="rz-eyebrow">Разборы</p>
+        <h1>Отдел из агентов: как устроен, чего стоит и где ломается</h1>
+
+        <p class="rz-index-intro">
+            Каждый разбор отвечает на один вопрос целиком, в первом же абзаце. Это веб-версия того,
+            что выходит в Telegram-канале «Отдел, который не надо нанимать»: её удобно перечитать
+            и передать коллеге, а числа здесь всегда идут вместе с методом, составом и датой замера.
+        </p>
+
+        <div class="rz-subscribe">
+            <p>Разборы выходят в Telegram-канале. Один вопрос за раз, с границами и цифрами, без обещаний полной самостоятельности.</p>
+            <div class="rz-tg-row">
+                <a class="rz-tg-link" href="https://t.me/miidas_ops" target="_blank" rel="noopener">Подписаться на Telegram</a>
+            </div>
+        </div>
+
+        <h2 class="rz-grid-heading">Что уже вышло</h2>
+
+        <div class="recipes-grid">
+            <a class="recipe-card" href="/razbory/chat-vs-work/">
+                <span class="recipe-emoji">💬</span>
+                <h3>Почему чат не заканчивает работу</h3>
+                <p>Ответ и работа — разные вещи. Три признака, по которым видно разницу.</p>
+            </a>
+            <a class="recipe-card" href="/razbory/when-we-say-no/">
+                <span class="recipe-emoji">🚫</span>
+                <h3>Пять случаев, когда мы говорим «нет»</h3>
+                <p>Где отдел из агентов не поможет и почему мы отказываемся чаще, чем кажется.</p>
+            </a>
+            <a class="recipe-card" href="/razbory/cost-of-entry/">
+                <span class="recipe-emoji">📋</span>
+                <h3>Что нужно на вашей стороне</h3>
+                <p>Цена входа до денег: один процесс, один владелец правил, готовность проверять.</p>
+            </a>
+        </div>
+
+        <div class="rz-cta" style="margin-top: 64px;">
+            <div class="cta-row">
+                <button class="cta-primary cta-clean" type="button" data-source="razbory_index">Попробовать МИИДАС в Telegram</button>
+                <a href="https://t.me/leshchenko1979" target="_blank" rel="noopener" class="cta-secondary">Разобрать один процесс с основателем →</a>
+            </div>
+            <p class="cta-microcopy">14 дней бесплатно, без карты. Никаких автосписаний.</p>
+        </div>
+
+        <p id="claimStatus" class="claim-status claim-toast hidden" role="status" aria-live="polite"></p>
+    </main>
+
+    <footer>
+        <div><strong>МИИДАС</strong> · Экосистема прикладного ИИ для бизнеса · <a href="https://miidas.ru">miidas.ru</a></div>
+        <div class="footer-links">
+            <a href="/factory/">Фабрики агентов</a>
+            <a href="/agent/">Аренда агента</a>
+            <a href="/course/">Обучение</a>
+            <a href="/recipes/">Рецепты</a>
+            <a href="/razbory/">Разборы</a>
+            <a href="https://t.me/miidas_ops">Telegram-канал</a>
+            <a href="https://t.me/leshchenko1979">Связаться с основателем</a>
+        </div>
+    </footer>
+
+    <script src="../app.js?v=1789518342"></script>
+</body>
+</html>
