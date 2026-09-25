@@ -43,11 +43,27 @@ jobs:
       - name: Content gate (rejected words)
         run: python3 -B tools/content_gate.py
 
+      # Structure, not copy: a hand-edit can break a reference without touching
+      # a word. This is what caught og:image 404ing on every page — a class the
+      # content gate cannot see.
+      - name: Site structure tests
+        run: python3 -B tests/test_check_site.py
+
+      - name: Site structure (links, ids, tags)
+        run: python3 -B tools/check_site.py
+
       # recipes/_template.html is a build input, not a page. The artifact is the
       # whole repo, so without this it is served publicly with __TOKEN__
       # placeholders unfilled (verified live 2026-09-24).
+      #
+      # __pycache__ is defence in depth: the gate steps run with -B so no
+      # bytecode is written, but the artifact is the whole tree, so anything a
+      # future step leaves behind would be published too.
       - name: Strip build-only files from the artifact
-        run: rm -f recipes/_template.html
+        run: |
+          rm -f recipes/_template.html
+          find . -name '__pycache__' -type d -prune -exec rm -rf {} +
+          find . -name '*.pyc' -delete
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
