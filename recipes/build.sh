@@ -13,7 +13,7 @@
 #   slug              — kebab-case ASCII, 1–80 chars (becomes URL path)
 #   title             — page title (e.g. "Как автоматизировать объявления для Авито")
 #   meta_description  — <meta> description, ≤160 chars recommended
-#   og_image          — full URL for og:image (default: https://miidas.ru/og-image.png)
+#   og_image          — full URL for og:image (default: https://miidas.ru/static/og-image.png)
 #   problem_html      — HTML fragment for § Проблема (plain text, <p>, <ul>, etc.)
 #   mockup_html       — HTML fragment for § Что делает бот (Telegram mockup markup)
 #   artifact_lead     — one-liner before the code block
@@ -67,7 +67,7 @@ eval "$JSON_ENV"
 SLUG="${META_SLUG}"
 TITLE="${META_TITLE}"
 META_DESCRIPTION="${META_META_DESCRIPTION}"
-OG_IMAGE="${META_OG_IMAGE:-https://miidas.ru/og-image.png}"
+OG_IMAGE="${META_OG_IMAGE:-https://miidas.ru/static/og-image.png}"
 PROBLEM_HTML="${META_PROBLEM_HTML}"
 MOCKUP_HTML="${META_MOCKUP_HTML}"
 ARTIFACT_LEAD="${META_ARTIFACT_LEAD}"
