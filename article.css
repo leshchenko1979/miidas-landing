@@ -1,8 +1,13 @@
-/* razbor.css — styles for /razbory/* pages.
-   Reuses the CSS custom-property tokens defined in ../style.css (:root).
+/* article.css — the shared long-form reading surface for the article sections.
+   Reuses the CSS custom-property tokens defined in style.css (:root).
    Same section pattern as recipes/recipe.css and factory/factory.css:
    the shared token layer does the design system, this file adds only the
-   long-form reading surface and the two funnel blocks. */
+   long-form reading surface and the funnel blocks.
+
+   Promoted from razbory/razbor.css when a second series began using the same
+   surface. The `rz-` class prefix is historical: these are the shared article
+   hooks, not a razbory-only namespace. A section that needs its own rules adds
+   a second stylesheet beside its pages and leaves this one alone. */
 
 /* ── Page shell ── */
 .rz-page {
