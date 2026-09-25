@@ -1,0 +1,291 @@
+/* zamer.css — the measurement-report surface for /zamer/*.
+   Reuses the shared tokens (style.css :root) and the shared long-form article
+   surface (../article.css). This file adds only what a numbered measurement
+   report needs and a razbor does not: the figure grid, the method disclosure
+   block, the distribution table and the share bar.
+
+   Craft rules observed here, same as factory.css:
+   no coloured side tabs on rounded cards, no zero-offset glow, no repeating
+   gradient stripes. Hierarchy comes from spacing, weight and the token palette. */
+
+/* ── Key figures, stated once at the top ── */
+.zm-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px;
+    margin: 0 0 40px;
+}
+
+.zm-stat {
+    padding: 20px 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.zm-stat-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text-bright);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 8px;
+}
+
+.zm-stat-label {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--text-dim);
+}
+
+.zm-stat.is-quiet .zm-stat-value {
+    color: var(--text-dim);
+}
+
+/* ── Method disclosure: population, method, date, exclusions ── */
+.zm-method {
+    margin: 0 0 40px;
+    padding: 24px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+.zm-method-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin: 0 0 16px;
+}
+
+.zm-method dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 10px 24px;
+}
+
+.zm-method dt {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--text-dim);
+}
+
+.zm-method dd {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+.zm-method code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.82rem;
+    color: var(--text-bright);
+    background: var(--accent-soft);
+    padding: 1px 6px;
+    border-radius: 5px;
+}
+
+/* ── Distribution table ── */
+.zm-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 20px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+}
+
+.zm-table caption {
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+}
+
+.zm-table th {
+    padding: 8px 10px;
+    text-align: left;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border-strong);
+    white-space: nowrap;
+}
+
+.zm-table td {
+    padding: 11px 10px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+}
+
+.zm-table th:not(:first-child),
+.zm-table td:not(:first-child) {
+    text-align: right;
+}
+
+.zm-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.zm-table td:first-child {
+    color: var(--text-bright);
+    font-weight: 600;
+}
+
+/* ── Share bar: one unit of comparison, 0 to 100 percent ── */
+.zm-share {
+    margin: 0 0 20px;
+}
+
+.zm-share-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.zm-share-row:last-child {
+    margin-bottom: 0;
+}
+
+.zm-share-name {
+    flex: 0 0 132px;
+    font-family: var(--font-body);
+    font-size: 0.84rem;
+    color: var(--text-dim);
+}
+
+.zm-share-track {
+    flex: 1 1 auto;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--card-hover);
+    overflow: hidden;
+}
+
+.zm-share-fill {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: var(--primary);
+}
+
+/* Muted fill = the qualifying row (типичная единица) against the headline
+   blue. It carries a real figure, so it is not decorative: WCAG 1.4.11 needs
+   3:1 against the --card-hover track. --border-strong measured 2.06:1 there,
+   so it is not used; --text-dim measures 6.03:1. */
+.zm-share-fill.is-muted {
+    background: var(--text-dim);
+}
+
+.zm-share-value {
+    flex: 0 0 56px;
+    text-align: right;
+    font-family: var(--font-body);
+    font-size: 0.84rem;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── Series index ── */
+.zm-issue {
+    display: block;
+    margin: 0 0 16px;
+    padding: 24px 26px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: background 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
+}
+
+.zm-issue:hover {
+    background: var(--card-hover);
+    border-color: var(--border-strong);
+}
+
+.zm-issue-date {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+}
+
+.zm-issue-title {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text-bright);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.zm-issue-summary {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-dim);
+}
+
+/* ── Mobile ── */
+@media (max-width: 720px) {
+    .zm-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .zm-stat {
+        padding: 16px 16px;
+    }
+
+    .zm-stat-value {
+        font-size: 1.35rem;
+    }
+
+    .zm-method dl {
+        grid-template-columns: 1fr;
+        gap: 4px 0;
+    }
+
+    .zm-method dt {
+        margin-top: 8px;
+    }
+
+    .zm-table {
+        font-size: 0.82rem;
+    }
+
+    .zm-table th,
+    .zm-table td {
+        padding: 8px 6px;
+    }
+
+    .zm-share-name {
+        flex: 0 0 96px;
+        font-size: 0.78rem;
+    }
+
+    .zm-share-value {
+        flex: 0 0 46px;
+        font-size: 0.78rem;
+    }
+}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0c0c'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='36' fill='%233db4ff'%3EM%3C/text%3E%3C/svg%3E">
+
+    <title>Замер №1: сколько на самом деле занимает работа — МИИДАС</title>
+    <meta name="description" content="Мы замерили собственную очередь: 24 единицы работы, медиана 31 минута, среднее 7 часов 32 минуты. Метод, выборка и дата раскрыты, число воспроизводится одной командой.">
+    <meta property="og:title" content="Замер №1: сколько на самом деле занимает работа — МИИДАС">
+    <meta property="og:description" content="Медиана 31 минута, среднее 7 часов 32 минуты. Одни и те же данные, и 29% записей, которые замер не смог использовать.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://miidas.ru/zamer/01/">
+    <meta property="og:image" content="https://miidas.ru/og-image.png">
+
+    <link rel="canonical" href="https://miidas.ru/zamer/01/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css?v=1789518342">
+    <link rel="stylesheet" href="../../article.css">
+    <link rel="stylesheet" href="../zamer.css">
+</head>
+<body>
+    <nav class="landing-nav" aria-label="Навигация">
+        <a href="/" class="nav-brand">МИИДАС</a>
+        <button type="button" class="nav-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-links">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+            <a href="/">Главная</a>
+            <a href="/factory/">Фабрики агентов</a>
+            <a href="/zamer/">Замеры</a>
+            <a href="/recipes/">Рецепты</a>
+            <a href="/razbory/">Разборы</a>
+            <a href="/course/">Практикум</a>
+            <a href="https://t.me/leshchenko1979">Связаться</a>
+        </div>
+    </nav>
+
+    <main class="rz-page">
+        <a href="/zamer/" class="rz-back">← Все замеры</a>
+        <p class="rz-eyebrow">Замер №1 · 25 сентября 2026</p>
+        <h1>Сколько на самом деле занимает работа</h1>
+
+        <p class="rz-answer">Медиана одной единицы работы: 31 минута. Среднее по тем же семнадцати: 7 часов 32 минуты. Данные одни и те же.</p>
+
+        <p class="rz-lede">
+            Мы замерили собственную очередь: 24 закрытые единицы работы из журнала фабрики за 15–25 сентября.
+            Ниже то, что показал замер, и то, где метод не сработал. Оба числа публикуем вместе, потому что
+            порознь каждое из них врёт.
+        </p>
+
+        <div class="zm-stats">
+            <div class="zm-stat">
+                <span class="zm-stat-value">24</span>
+                <span class="zm-stat-label">единицы работы закрыто за период</span>
+            </div>
+            <div class="zm-stat">
+                <span class="zm-stat-value">31,5 мин</span>
+                <span class="zm-stat-label">медиана от постановки до закрытия</span>
+            </div>
+            <div class="zm-stat">
+                <span class="zm-stat-value">7 ч 32 мин</span>
+                <span class="zm-stat-label">среднее по тем же единицам</span>
+            </div>
+            <div class="zm-stat is-quiet">
+                <span class="zm-stat-value">29 %</span>
+                <span class="zm-stat-label">записей, которые замер не смог использовать</span>
+            </div>
+        </div>
+
+        <div class="zm-method">
+            <p class="zm-method-label">Метод, выборка, дата</p>
+            <dl>
+                <dt>Что измеряем</dt>
+                <dd>Время от постановки единицы работы до её закрытия. У каждой единицы в журнале три метки: постановка, взятие в работу, закрытие.</dd>
+                <dt>Источник</dt>
+                <dd><code>evidence/ledger.jsonl</code> в репозитории фабрики</dd>
+                <dt>Период</dt>
+                <dd>15–25 сентября 2026</dd>
+                <dt>Объём</dt>
+                <dd>113 строк журнала, 24 закрытые единицы работы</dd>
+                <dt>Воспроизвести</dt>
+                <dd><code>python3 tools/measure_contour.py</code></dd>
+                <dt>Исключено</dt>
+                <dd>3 строки, относящиеся к другому репозиторию, и 7 единиц, метки времени которых не разделяют работу</dd>
+            </dl>
+        </div>
+
+        <section class="rz-section">
+            <h2>Два числа из одних данных</h2>
+            <p>
+                Типичная единица работы в этой выборке закрывается за полчаса. Медиана составляет
+                31,5 минуты, и это самое честное описание обычного дня.
+            </p>
+            <p>
+                Среднее по тем же семнадцати единицам равно 7 часам 32 минутам, то есть в 14 раз больше
+                медианы. Оба числа посчитаны по одному и тому же набору строк. Расходятся они не из-за
+                ошибки, а из-за хвоста распределения.
+            </p>
+
+            <table class="zm-table">
+                <caption>Распределение по 17 единицам работы, метки которых разделяют работу. Время в минутах.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Отрезок</th>
+                        <th scope="col">Минимум</th>
+                        <th scope="col">Медиана</th>
+                        <th scope="col">Среднее</th>
+                        <th scope="col">Максимум</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Вся единица</td>
+                        <td>11,8</td>
+                        <td>31,5</td>
+                        <td>451,9</td>
+                        <td>4 482,3</td>
+                    </tr>
+                    <tr>
+                        <td>Ожидание исполнителя</td>
+                        <td>2,0</td>
+                        <td>13,9</td>
+                        <td>409,7</td>
+                        <td>4 473,5</td>
+                    </tr>
+                    <tr>
+                        <td>Работа</td>
+                        <td>0,0</td>
+                        <td>9,9</td>
+                        <td>42,2</td>
+                        <td>502,8</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                В типичной единице работа занимает минуты, а остальной срок она ждёт, пока её возьмут.
+                Правило не универсальное: одна единица работала 8 часов 23 минуты почти без ожидания —
+                это максимум в строке «Работа» и одна из четырёх, не уложившихся в четыре часа.
+            </p>
+        </section>
+
+        <section class="rz-section">
+            <h2>Почему среднее так далеко от медианы</h2>
+            <p>
+                Из семнадцати единиц тринадцать уложились в четыре часа, пятнадцать — в сутки. За
+                сутки вытянули только две: одна ждала исполнителя 74 часа 33 минуты, вторая
+                32 часа 42 минуты. Им принадлежит 84 % всего срока по выборке, и без них среднее
+                составило бы 81 минуту вместо 7 часов 32 минут.
+            </p>
+            <p>
+                Отсюда практический вывод, который дороже самих чисел. Одна строка может сдвинуть
+                среднее по всей выборке. Смотреть на среднее и не смотреть на распределение означает
+                принимать решения по одному выбросу.
+            </p>
+
+            <div class="zm-share">
+                <div class="zm-share-row">
+                    <span class="zm-share-name">Суммарно по выборке</span>
+                    <span class="zm-share-track"><span class="zm-share-fill" style="width: 90.7%"></span></span>
+                    <span class="zm-share-value">90,7 %</span>
+                </div>
+                <div class="zm-share-row">
+                    <span class="zm-share-name">Типичная единица</span>
+                    <span class="zm-share-track"><span class="zm-share-fill is-muted" style="width: 44%"></span></span>
+                    <span class="zm-share-value">44,0 %</span>
+                </div>
+            </div>
+            <p>
+                Доля времени, которое единица работы проводит в ожидании. Суммарная цифра описывает
+                хвост, а не обычный день: в типичной единице ожидание занимает меньше половины срока.
+            </p>
+        </section>
+
+        <section class="rz-section">
+            <h2>Чего замер не смог измерить</h2>
+            <p>
+                Семь единиц работы из двадцати четырёх не попали в расчёт. У шести все три метки времени
+                записаны одним пакетом при закрытии, поэтому промежуток между ними равен нулю по
+                построению, а не потому что работа заняла ноль. У одной нет метки постановки.
+            </p>
+            <p>
+                Это и есть главный результат выпуска. Метрика не работает, если начало работы
+                отмечают задним числом. Отсюда правило, которое мы теперь применяем у себя: метка
+                ставится в момент события, а не при подведении итогов. Компания, которая не
+                фиксирует старт, не может увидеть собственную очередь, сколько бы отчётов она ни собирала.
+            </p>
+            <p>
+                Второе, что мы пока не измеряем: доля черновиков, отклонённых механическим гейтом
+                перед публикацией. Записей об этом нигде нет, поэтому в замер это число не попало.
+                Мы поставим его в следующий выпуск, когда появится журнал прогонов гейта.
+            </p>
+        </section>
+
+        <section class="rz-section">
+            <h2>Что это значит для вашей очереди</h2>
+            <p>
+                Спросите себя, где сейчас лежит незакрытая задача и как давно. Если ответа нет,
+                вопрос не в скорости исполнителей, а в отсутствии отметок. Порядок действий простой:
+                сначала фиксировать постановку и закрытие, потом считать. Наоборот не работает.
+            </p>
+            <p>
+                Мы показываем этот замер целиком, включая неудачную треть выборки, потому что
+                обещание измеримости имеет смысл только вместе с методом. Как устроен отдел,
+                который мы собираем, и как он оценивается по 19 критериям, описано на странице
+                фабрики агентов.
+            </p>
+        </section>
+
+        <div class="rz-tg">
+            <p>Замеры выходят в Telegram-канале «Отдел, который не надо нанимать». Там же обсуждение выпуска и следующие замеры.</p>
+            <div class="rz-tg-row">
+                <a class="rz-tg-link" href="https://t.me/miidas_ops" target="_blank" rel="noopener">Подписаться на Telegram</a>
+                <a class="rz-tg-link" href="https://t.me/miidas_ops/6" target="_blank" rel="noopener">Карта канала</a>
+            </div>
+        </div>
+
+        <div class="rz-more">
+            <h2>Читайте также</h2>
+            <ul>
+                <li><a href="/factory/">Фабрика агентов: методика оценки, скоринг шести систем и срок жизни задачи</a></li>
+                <li><a href="/razbory/chat-vs-work/">Почему чат не заканчивает работу</a></li>
+                <li><a href="/razbory/cost-of-entry/">Что потребуется на вашей стороне</a></li>
+            </ul>
+        </div>
+
+        <div class="rz-cta">
+            <div class="cta-row">
+                <button class="cta-primary cta-clean" type="button" data-source="zamer_01">Попробовать МИИДАС в Telegram</button>
+                <a href="https://t.me/leshchenko1979" target="_blank" rel="noopener" class="cta-secondary">Разобрать один процесс с основателем →</a>
+            </div>
+            <p class="cta-microcopy">14 дней бесплатно, без карты. Никаких автосписаний.</p>
+        </div>
+
+        <p id="claimStatus" class="claim-status claim-toast hidden" role="status" aria-live="polite"></p>
+    </main>
+
+    <footer>
+        <div><strong>МИИДАС</strong> · Экосистема прикладного ИИ для бизнеса · <a href="https://miidas.ru">miidas.ru</a></div>
+        <div class="footer-links">
+            <a href="/factory/">Фабрики агентов</a>
+            <a href="/zamer/">Замеры</a>
+            <a href="/agent/">Аренда агента</a>
+            <a href="/course/">Обучение</a>
+            <a href="/recipes/">Рецепты</a>
+            <a href="/razbory/">Разборы</a>
+            <a href="https://t.me/miidas_ops">Telegram-канал</a>
+            <a href="https://t.me/leshchenko1979">Связаться с основателем</a>
+        </div>
+    </footer>
+
+    <script src="../../app.js?v=1789518342"></script>
+</body>
+</html>
