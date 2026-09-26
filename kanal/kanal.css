@@ -1,0 +1,106 @@
+/* /kanal/ — the web mirror of the Telegram channel.
+   Layout only. Everything else reuses article.css, so the page reads as one
+   of the site's sections rather than a second design system. */
+
+/* ── The channel directory (web equivalent of the pinned post) ── */
+.kanal-dir {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin: 0 0 56px;
+}
+
+.kanal-dir-group h3 {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 0 0 10px;
+}
+
+.kanal-dir-group ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.kanal-dir-group li {
+    margin-bottom: 8px;
+}
+
+.kanal-dir-group a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-strong);
+    transition: color 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
+}
+
+.kanal-dir-group a:hover {
+    color: var(--text-bright);
+    border-color: var(--primary);
+}
+
+/* ── One mirrored post ── */
+.kanal-post {
+    margin-bottom: 32px;
+}
+
+.kanal-post-meta {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin: 0 0 12px;
+}
+
+.kanal-post-meta a {
+    color: var(--text-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-strong);
+    transition: color 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
+}
+
+.kanal-post-meta a:hover {
+    color: var(--text-bright);
+    border-color: var(--primary);
+}
+
+.kanal-post code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9em;
+    color: var(--text-bright);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 5px;
+}
+
+.kanal-post-deep {
+    margin: 20px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.kanal-post-deep a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.15s var(--ease-out);
+}
+
+.kanal-post-deep a:hover {
+    color: var(--primary-hover);
+}
+
+@media (max-width: 720px) {
+    .kanal-dir {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
