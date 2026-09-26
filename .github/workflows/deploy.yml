@@ -52,6 +52,16 @@ jobs:
       - name: Site structure (links, ids, tags)
         run: python3 -B tools/check_site.py
 
+      # The channel mirror. The content gate owns copy and check_site owns
+      # structure; neither can see a post that published and was never
+      # mirrored, because that is a fact about the channel data, not about
+      # any one page. CONTENT-FUNNEL.md §2.1 makes it a completion condition.
+      - name: Channel mirror tests
+        run: python3 -B tests/test_check_mirror.py
+
+      - name: Channel mirror (page matches the channel data)
+        run: python3 -B tools/check_mirror.py
+
       # recipes/_template.html is a build input, not a page. The artifact is the
       # whole repo, so without this it is served publicly with __TOKEN__
       # placeholders unfilled (verified live 2026-09-24).
