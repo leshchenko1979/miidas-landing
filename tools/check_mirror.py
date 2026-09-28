@@ -20,6 +20,7 @@ Usage:  python3 tools/check_mirror.py [root]
 """
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
@@ -31,6 +32,18 @@ import kanal_posts as kp  # noqa: E402
 
 MARKER = 'class="rz-section kanal-post"'
 
+
+def has_permalink(html: str, url: str) -> bool:
+    """True when `url` sits in the page as a whole token.
+
+    A bare `url in html` is fooled by a longer id that shares the prefix:
+    `https://t.me/miidas_ops/9999` contains `https://t.me/miidas_ops/9`, so the
+    containment test reports the mirror intact while the real permalink is gone.
+    Measured 2026-09-28: inserting post 9 as the newest entry made POSTS[0] an id
+    whose prefix matched the control test's sentinel, and the deploy went red --
+    the per-post check had been passing on a replaced permalink all along.
+    """
+    return re.search(re.escape(url) + r"(?![\w/])", html) is not None
 
 def check(root: Path) -> list[str]:
     findings: list[str] = []
@@ -49,7 +62,7 @@ def check(root: Path) -> list[str]:
         )
 
     for post in kp.POSTS:
-        if post["url"] not in html:
+        if not has_permalink(html, post["url"]):
             findings.append(
                 f"kanal/index.html: post {post['id']} is not mirrored "
                 f"(missing permalink {post['url']})"

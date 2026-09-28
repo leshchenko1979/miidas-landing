@@ -24,7 +24,7 @@ import kanal_posts as kp  # noqa: E402
 
 # Declared case floor: main() fails when fewer are collected, so a duplicated
 # or silently-skipped body cannot report success.
-MIN_CASES = 8
+MIN_CASES = 9
 
 
 class MirrorCase(unittest.TestCase):
@@ -72,6 +72,18 @@ class TestControls(MirrorCase):
         self.mutate(victim["url"], "https://t.me/miidas_ops/9999")
         found = self.findings()
         self.assertTrue(any("not mirrored" in f for f in found), found)
+
+    def test_permalink_check_is_not_fooled_by_a_longer_id(self) -> None:
+        """A substring test passes when the permalink grows a digit.
+
+        `https://t.me/miidas_ops/9999` contains `https://t.me/miidas_ops/9`, so a
+        containment check reports the mirror intact while the real permalink is
+        gone. This is not hypothetical: it turned the deploy red on 2026-09-28 the
+        moment post 9 became POSTS[0]. The permalink must match as a whole token.
+        """
+        victim = kp.POSTS[0]
+        self.mutate(victim["url"], victim["url"] + "99")
+        self.assertTrue(any("not mirrored" in f for f in self.findings()))
 
     def test_dropped_post_row_is_reported(self) -> None:
         """A whole <article> removed, permalink gone with it."""
