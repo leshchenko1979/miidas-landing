@@ -302,6 +302,58 @@
     max-width: 460px;
 }
 
+/* ── Comparison table ──
+   Columns are prose, not figures, so every cell is left-aligned; the numeric
+   sibling lives in zamer/zamer.css and right-aligns its non-first columns.
+   Additive only: no new colour, every value comes from style.css tokens. */
+.rz-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 24px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.rz-table caption {
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+}
+
+.rz-table th {
+    padding: 8px 12px 8px 0;
+    text-align: left;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border-strong);
+}
+
+.rz-table td {
+    padding: 12px 12px 12px 0;
+    color: var(--text);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+}
+
+.rz-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.rz-table td:first-child {
+    color: var(--text-bright);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
 /* ── Mobile ── */
 @media (max-width: 720px) {
     .rz-page {
@@ -329,5 +381,14 @@
 
     .rz-tg-link {
         text-align: center;
+    }
+
+    .rz-table {
+        font-size: 0.84rem;
+    }
+
+    .rz-table th,
+    .rz-table td {
+        padding: 8px 10px 8px 0;
     }
 }
