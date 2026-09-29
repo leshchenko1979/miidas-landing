@@ -24,7 +24,7 @@ import kanal_posts as kp  # noqa: E402
 
 # Declared case floor: main() fails when fewer are collected, so a duplicated
 # or silently-skipped body cannot report success.
-MIN_CASES = 9
+MIN_CASES = 14
 
 
 class MirrorCase(unittest.TestCase):
@@ -69,7 +69,10 @@ class TestControls(MirrorCase):
     def test_unmirrored_post_is_reported(self) -> None:
         """The real failure: a post exists in the data but not on the page."""
         victim = kp.POSTS[0]
-        self.mutate(victim["url"], "https://t.me/miidas_ops/9999")
+        # Every occurrence: the directory block cites the same permalink as the
+        # post row, so replacing one copy leaves the other and the post is still
+        # (correctly) reported as mirrored.
+        self.mutate_all(victim["url"], "https://t.me/miidas_ops/9999")
         found = self.findings()
         self.assertTrue(any("not mirrored" in f for f in found), found)
 
@@ -82,7 +85,7 @@ class TestControls(MirrorCase):
         moment post 9 became POSTS[0]. The permalink must match as a whole token.
         """
         victim = kp.POSTS[0]
-        self.mutate(victim["url"], victim["url"] + "99")
+        self.mutate_all(victim["url"], victim["url"] + "99")
         self.assertTrue(any("not mirrored" in f for f in self.findings()))
 
     def test_dropped_post_row_is_reported(self) -> None:
@@ -109,6 +112,66 @@ class TestControls(MirrorCase):
         self.mutate(f"<h3>{victim['title']}</h3>", "<h3>Другое</h3>")
         found = self.findings()
         self.assertTrue(any("title missing" in f for f in found), found)
+
+
+class TestDirectory(MirrorCase):
+    """The pinned directory against the channel data.
+
+    Every case monkeypatches kp.PIN, so each one restores it in tearDown and
+    asserts the restore. A leaked mutation would corrupt every later case.
+    """
+
+    def setUp(self) -> None:
+        super().setUp()
+        self._pin = dict(kp.PIN)
+        self._groups = [list(g) for g in kp.PIN["groups"]]
+        self.addCleanup(self._restore)
+
+    def _restore(self) -> None:
+        expected = len([i for _, items in self._groups for i in items])
+        kp.PIN.clear()
+        kp.PIN.update(self._pin)
+        kp.PIN["groups"] = self._groups
+        self.assertEqual(
+            len(check_mirror.pin_links()), expected,
+            "PIN was not restored — a leaked mutation would corrupt later cases",
+        )
+
+    def test_a_fresh_directory_is_clean(self) -> None:
+        self.assertEqual(check_mirror.check_directory(), [])
+
+    def test_uncited_post_is_reported(self) -> None:
+        """The real failure: a post publishes and the map never learns of it."""
+        drop = kp.POSTS[0]["url"]
+        kp.PIN["groups"] = [
+            (h, [i for i in items if i[1] != drop]) for h, items in self._groups
+        ]
+        found = self.findings()
+        self.assertTrue(any("not in the pinned directory" in f for f in found), found)
+
+    def test_link_to_an_unpublished_post_is_reported(self) -> None:
+        """A link above the newest mirrored post points at nothing."""
+        kp.PIN["groups"] = self._groups + [
+            ("Тест", [("Свежий пост", "https://t.me/miidas_ops/999")])
+        ]
+        found = self.findings()
+        self.assertTrue(any("does not resolve" in f for f in found), found)
+
+    def test_link_to_a_missing_page_is_reported(self) -> None:
+        """A site link whose page does not exist in the repository."""
+        kp.PIN["groups"] = self._groups + [
+            ("Тест", [("Несуществующая страница", "https://miidas.ru/no-such-page/")])
+        ]
+        found = self.findings()
+        self.assertTrue(any("has no page" in f for f in found), found)
+
+    def test_over_long_pinned_post_is_reported(self) -> None:
+        """A directory that outgrows Telegram's limit cannot publish at all."""
+        kp.PIN["groups"] = self._groups + [
+            ("Тест", [("Д" * 4000, "https://miidas.ru/zamer/")])
+        ]
+        found = self.findings()
+        self.assertTrue(any("over Telegram" in f for f in found), found)
 
 
 class TestCollection(unittest.TestCase):
