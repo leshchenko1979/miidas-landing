@@ -45,6 +45,54 @@
     border-color: var(--primary);
 }
 
+/* ── The directory's CTA ──
+   The pinned post ends with an offer and a forwarding prompt; the web
+   equivalent has to end the same way, or a reader who arrives from search
+   gets the map without the way in. */
+.kanal-dir-cta {
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin: 0 0 56px;
+}
+
+.kanal-dir-cta h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin: 0 0 8px;
+}
+
+.kanal-dir-cta p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0 0 8px;
+}
+
+.kanal-dir-cta p:last-child {
+    margin-bottom: 0;
+}
+
+.kanal-dir-cta a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-strong);
+    transition: color 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
+}
+
+.kanal-dir-cta a:hover {
+    color: var(--primary-hover);
+    border-color: var(--primary);
+}
+
+.kanal-dir-cta .kanal-dir-forward {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
 /* ── One mirrored post ── */
 .kanal-post {
     margin-bottom: 32px;

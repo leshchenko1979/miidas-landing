@@ -36,16 +36,37 @@ PIN = {
         ]),
         ("Где не работает", [
             ("Пять случаев, когда мы говорим «нет»", "https://t.me/miidas_ops/4"),
+            ("Ошибся бы так же человек? Четыре класса сбоев", "https://t.me/miidas_ops/9"),
         ]),
         ("Что нужно от вас", [
             ("Цена входа до денег", "https://t.me/miidas_ops/5"),
         ]),
-        ("Устройство и цифры", [
+        ("Замеры и цифры", [
+            ("Где на самом деле лежит время: разбор собственной очереди", "https://t.me/miidas_ops/8"),
+            ("Все замеры с методом и таблицами", "https://miidas.ru/zamer/"),
+        ]),
+        ("Сайт и материалы", [
+            ("МИИДАС: обучение, аренда агентов и фабрики", "https://miidas.ru/"),
             ("Фабрика агентов: из чего состоит отдел и как он измеряется", "https://miidas.ru/factory/"),
             ("Рецепты: задачи, которые агент закрывает каждый день", "https://miidas.ru/recipes/"),
             ("Все разборы на сайте", "https://miidas.ru/razbory/"),
+            ("Полный текст всех постов канала", "https://miidas.ru/kanal/"),
         ]),
     ],
+    # The CTA and the forwarding prompt below are part of the pinned post on
+    # Telegram and must therefore also appear in the web directory (law §2.1.4:
+    # the web carries the equivalent of the pin, not merely its link list).
+    "cta_heading": "Начать с одного процесса",
+    "cta_text": (
+        "Разбор одного процесса стоит дешевле, чем ошибка в оценке всего отдела. "
+        "Напишите основателю:"
+    ),
+    "cta_label": "@leshchenko1979",
+    "cta_url": "https://t.me/leshchenko1979",
+    "forward": (
+        "Если у вас есть знакомый, у которого поручения живут в переписке, "
+        "перешлите ему подборку выше."
+    ),
 }
 
 POSTS = [

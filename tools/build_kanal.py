@@ -5,8 +5,10 @@ Source of truth is tools/kanal_posts.py. This script only converts the
 channel's own markup to HTML and lays the page out, so the post text on the
 site is the post text that was published, not a re-typed copy.
 
-Usage:  python3 tools/build_kanal.py [--check]
-        --check  render to memory and report whether kanal/index.html is current
+Usage:  python3 tools/build_kanal.py [--check | --pin-text]
+        --check     render to memory and report whether kanal/index.html is current
+        --pin-text  print the Telegram pinned post body derived from kp.PIN
+                    (paste into the channel; never hand-edit the pin again)
 """
 from __future__ import annotations
 
@@ -100,7 +102,13 @@ def render_footer() -> str:
 
 
 def render_directory() -> str:
-    """The web equivalent of the pinned navigation post (law §2.1.4)."""
+    """The web equivalent of the pinned navigation post (law §2.1.4).
+
+    Carries the CTA and the forwarding prompt as well as the link groups: the
+    law requires the equivalent of the pin, not merely its link list, and a
+    reader who arrives from search should get the same offer a Telegram reader
+    gets.
+    """
     out = [f'        <p class="rz-index-intro">{inline(kp.PIN["promise"])}</p>']
     out.append('        <div class="kanal-dir">')
     for heading, items in kp.PIN["groups"]:
@@ -112,7 +120,37 @@ def render_directory() -> str:
         out.append("                </ul>")
         out.append("            </div>")
     out.append("        </div>")
+    out.append('        <div class="kanal-dir-cta">')
+    out.append(f'            <h3>{kp.PIN["cta_heading"]}</h3>')
+    out.append(
+        f'            <p>{inline(kp.PIN["cta_text"])} '
+        f'<a href="{kp.PIN["cta_url"]}">{kp.PIN["cta_label"]}</a></p>'
+    )
+    out.append(f'            <p class="kanal-dir-forward">{inline(kp.PIN["forward"])}</p>')
+    out.append("        </div>")
     return "\n".join(out)
+
+
+def render_pin_text() -> str:
+    """The pinned navigation post, derived from kp.PIN.
+
+    Generated rather than hand-written so the pin and the web directory cannot
+    drift apart — both come from this one dict. Before this existed the pin was
+    typed once and maintained by hand: measured 2026-09-28, three posts had
+    published and been mirrored on the web while the channel's own map still
+    listed only the original three. Two writers on one surface.
+    """
+    out = [f"**{kp.CHANNEL['title']}**", "", kp.PIN["promise"], ""]
+    for heading, items in kp.PIN["groups"]:
+        out.append(f"**{heading}**")
+        for label, url in items:
+            out.append(f"• [{label}]({url})")
+        out.append("")
+    out.append(f"**{kp.PIN['cta_heading']}**")
+    out.append(f"{kp.PIN['cta_text']} [{kp.PIN['cta_label']}]({kp.PIN['cta_url']})")
+    out.append("")
+    out.append(kp.PIN["forward"])
+    return "\n".join(out).rstrip() + "\n"
 
 
 def render_post(post: dict) -> str:
@@ -204,6 +242,9 @@ def build() -> str:
 
 
 def main() -> int:
+    if "--pin-text" in sys.argv:
+        sys.stdout.write(render_pin_text())
+        return 0
     html = build()
     if "--check" in sys.argv:
         current = OUT.read_text(encoding="utf-8") if OUT.exists() else ""
