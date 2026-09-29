@@ -732,6 +732,32 @@
     max-width: 74ch;
 }
 
+/* Price line inside a phase head. Two classes deep on purpose: the
+   generic `.fx-phase-head p` rule above is a descendant selector at
+   specificity (0,1,1), so a bare `.fx-phase-price` would lose to it and
+   inherit margin:0 plus the body colour. Deliberately not --warning:
+   on this page amber already means "attention" (the queue callout, the
+   latency bar, the Provisional band), and a price carries no such
+   valence. The figure runs in --text-bright at 19.31:1 on --bg; the
+   qualifier recedes to --text-dim at 7.16:1, mirroring the
+   .pricing-card .price / small pattern on the agent page. */
+.fx-phase-head p.fx-phase-price {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text-bright);
+    font-variant-numeric: tabular-nums;
+    margin: 0 0 14px;
+    max-width: none;
+}
+
+.fx-phase-head p.fx-phase-price small {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--text-dim);
+}
+
 .fx-phase-out-label {
     font-family: var(--font-body);
     font-size: 0.78rem;
